@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<link rel="icon" href="../img/ico.ico">
+<link rel="stylesheet" href="../css/css.css">
+<script src="../js/js.js"></script>
+<style>
+	#accordion {
+		width: 640px; margin: 50px auto; font-family: "Arial";
+	}
+	.panel {
+		border: 1px solid #195a93; border-radius: 5px; margin-bottom: 5px;
+	}
+	.panel h4 {
+		height: 38px; background: #3479b6; color: #fff; line-height: 38px; padding-left: 15px; cursor: pointer;
+	}
+	.panel-body {
+		height: 0; overflow: hidden; border-radius: 0 0 5px 5px;
+	}
+	.panel p {
+		padding: 20px 15px; font-size: 14px; line-height: 20px; color: #333; background: #F5F5F5;
+	}
+	
+</style>
+</head>
+<body>
+	<div id="accordion">
+		<div class="panel">
+			<h4>Title 1</h4>
+			<div class="panel-body active">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut quidem dicta, dignissimos veniam est, accusantium odio? Ratione enim debitis magni, odio minus possimus earum sequi laborum voluptatem maiores quisquam deleniti.
+				</p>
+			</div>
+		</div>
+		<div class="panel">
+			<h4>Title 2</h4>
+			<div class="panel-body">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut quidem dicta, dignissimos veniam est, accusantium odio? Ratione enim debitis magni, odio minus possimus earum sequi laborum voluptatem maiores quisquam deleniti.
+				</p>
+			</div>
+		</div>
+		<div class="panel">
+			<h4>Title 3</h4>
+			<div class="panel-body">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut quidem dicta, dignissimos veniam est, accusantium odio? Ratione enim debitis magni, odio minus possimus earum sequi laborum voluptatem maiores quisquam deleniti. Ratione enim debitis magni, odio minus possimus earum sequi laborum voluptatem maiores quisquam deleniti.
+				</p>
+			</div>
+		</div>
+	</div>
+
+<script>
+	(function(){
+		var aH4=document.getElementsByTagName('h4');
+		var aPanelBody=document.getElementsByClassName('panel-body');
+
+		for(var i=0; i<aH4.length; i++){
+			aH4[i].onclick=function(){
+				for(var i=0; i<aPanelBody.length; i++){
+					doMove(aPanelBody[i], {'height': 0}, 5);
+				}
+
+				var panelBody=this.nextElementSibling;
+
+				if(panelBody.offsetHeight==0){
+					doMove(panelBody, {'height': panelBody.children[0].offsetHeight}, 5);
+				}else{
+					doMove(panelBody, {'height': 0}, 5);
+				}
+			}
+		}
+
+		function doMove(obj, json, n, endFn) {
+			clearInterval(obj.timer);
+			var iValue = 0;
+			var iSpeed = 0;
+			var iOffset = 0;
+			obj.timer = setInterval(function() {
+				var isStop = true;
+				for (var attr in json) {
+					var iTarget = json[attr];
+
+					if (attr == 'opacity') {
+						iValue = parseInt(parseFloat(getStyle(obj, attr)) * 100);
+					} else {
+						iValue = parseInt(getStyle(obj, attr));
+					}
+
+					iSpeed = (iTarget - iValue) / n;
+					iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
+					iOffset = iValue + iSpeed;
+
+					if (iValue != iTarget) {
+						isStop = false;
+						if (attr == 'opacity') {
+							obj.style.opacity = iOffset / 100;
+							obj.style.filter = 'alpha(opacity=' + iOffset + ')';
+						} else {
+							obj.style[attr] = iOffset + 'px';
+						}
+					}
+				}
+				if (isStop) {
+					clearInterval(obj.timer);
+					endFn && endFn();
+				}
+			}, 30);
+		}
+		
+	})();
+</script>
+</body>
+</html>

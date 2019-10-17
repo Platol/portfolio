@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<link rel="icon" href="../img/ico.ico">
+<link rel="stylesheet" href="../css/css.css">
+<script src="../js/js.js"></script>
+<style>
+	p {
+		width: 600px; padding: 10px; margin: 50px auto; line-height: 30px; border: 1px solid #666; border-radius: 8px; text-align: justify;
+	}
+</style>
+</head>
+
+<body>
+<p></p>
+
+<script>
+	(function(){
+		var oP=document.getElementsByTagName('p')[0];
+		var arr=[];
+
+		for( var i=0; i<1000; i++ ){
+			arr.push(i);
+		}
+
+		arr.sort( rdm );
+
+		arr.length=100;
+
+		oP.innerHTML=arr.join(', ');
+	})();
+	
+</script>
+</body>
+</html>

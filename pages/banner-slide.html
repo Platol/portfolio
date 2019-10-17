@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<link rel="icon" href="../img/ico.ico">
+<link rel="stylesheet" href="../css/css.css">
+<script src="../js/js.js"></script>
+<style>
+	#wrap {
+		width: 790px; height: 340px; margin: 50px auto; position: relative; overflow: hidden;
+	}
+	ol {
+		position: absolute; left: 0;
+	}
+	ol li {
+		width: 790px; height: 340px; float: left;
+	}
+	img {
+		border: none;
+	}
+	.btn {
+		width: 30px; height: 60px; position: absolute; top: 140px; background: url(../img/jd/bg.png) no-repeat;
+	}
+	#lb {
+		background-position: 0 0; left: -30px;
+	}
+	#rb {
+		background-position: 0 -120px; right: -30px;
+	}
+	#lb:hover{
+		background-position: 0 -60px;
+	}
+	#rb:hover{
+		background-position: 0 -180px;
+	}
+	#btm {
+		position: absolute; bottom: 20px; background: url(../img/jd/bg.png) 0 -260px repeat-x; height: 20px;
+	}
+	span {
+		width: 10px; height: 20px; float: left; background: url(../img/jd/bg.png) 0 -240px no-repeat; margin-left: -10px;
+	}
+	strong{
+		width: 10px; height: 20px; float: right; background: url(../img/jd/bg.png) 0 -280px no-repeat; margin-right: -10px;
+	}
+	ul li {
+		width: 12px; height: 12px; float: left; background: url(../img/jd/bg.png) 0 -300px no-repeat; margin: 4px 5px;
+	}
+	ul li:hover {
+		background-position: 0 -312px;
+	}
+	
+</style>
+</head>
+<body>
+<div id="wrap">
+	<ol></ol>
+	<a class="btn" id="lb" href="javascript:;"></a>
+	<a class="btn" id="rb" href="javascript:;"></a>
+	<div id="btm">
+		<span></span>
+		<strong></strong>
+		<ul></ul>
+	</div>
+</div>
+
+<script>
+	(function(){
+		var oWrap=document.getElementById('wrap');
+		var oOl=document.getElementsByTagName('ol')[0];
+		var aImg=document.getElementsByTagName('img');
+		var oLb=document.getElementById('lb');
+		var oRb=document.getElementById('rb');
+		var oBtm=document.getElementById('btm');
+		var oUl=document.getElementsByTagName('ul')[0];
+		var aLi=oUl.getElementsByTagName('li');
+		var arr=['../img/jd/1.jpg', '../img/jd/2.jpg', '../img/jd/3.jpg', '../img/jd/4.jpg', '../img/jd/5.jpg', '../img/jd/6.jpg', '../img/jd/7.jpg'];
+		var n=0;
+
+		oBtm.style.width=arr.length*22+'px';
+		oBtm.style.left=(oWrap.clientWidth-oBtm.offsetWidth)/2+'px';
+		for(var i=0; i<arr.length; i++){
+			var oLi=document.createElement('li');
+			oLi.innerHTML='<a href="javascript:;"><img src="' + arr[i] + '"></a>';
+			oOl.appendChild(oLi);
+
+			oUl.innerHTML+='<li></li>'
+		}
+		oOl.style.width=790*arr.length+'px';
+
+		fn();
+
+		var timer=setInterval(auto, 5000);
+
+		oWrap.onmouseover=function(){
+			linearMove( oLb, 'left', 10, 0 );
+			linearMove( oRb, 'right', 10, 0 );
+			clearInterval(timer);
+		}
+
+		oWrap.onmouseout=function(){
+			linearMove( oLb, 'left', 10, -30 );
+			linearMove( oRb, 'right', 10, -30 );
+			timer=setInterval(auto, 5000);
+		}
+
+		for(var i=0; i<aLi.length; i++){
+			aLi[i].index=i;
+
+			aLi[i].onmouseover=function(){
+				n=this.index;
+				fn();
+			}
+		}
+
+		oRb.onclick=function(){
+			n++;
+			n==arr.length?n=0:n;
+			fn();
+		}
+
+		oLb.onclick=function(){
+			n--;
+			n==-1?n=arr.length-1:n;
+			fn();
+		}
+
+
+		function fn(){
+			animate( oOl, { 'left': -n*790 }, 8 );
+			for( var i=0; i<aLi.length; i++ ){
+				aLi[i].style.backgroundPositionY='-300px';
+			}
+			aLi[n].style.backgroundPositionY='-312px';
+		}
+
+		function auto(){
+			n++;
+			n==arr.length?n=0:n;
+			fn();
+		}
+	})();
+	
+</script>
+</body>
+</html>

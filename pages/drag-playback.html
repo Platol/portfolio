@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<link rel="icon" href="../img/ico.ico">
+<link rel="stylesheet" href="../css/css.css">
+<script src="../js/js.js"></script>
+<style>
+	div {
+		width: 100px; height: 100px; background: orange; position: absolute; left: 0; top: 40px;
+	}
+	
+</style>
+</head>
+
+<body>
+<input type="button" value="回放">
+<div></div>
+
+<script>
+	(function(){
+		var oBtn=document.getElementsByTagName('input')[0];
+		var oDiv=document.getElementsByTagName('div')[0];
+		var arrL=[0];
+		var arrT=[40];
+		var timer=null;
+
+		oDiv.onmousedown=function(ev){
+			var ev=ev||event;
+			var disX=ev.clientX-this.offsetLeft;
+			var disY=ev.clientY-this.offsetTop;
+
+			if( oDiv.setCapture ){ oDiv.setCapture(); }
+
+			document.onmousemove=function(ev){
+				var ev=ev||event;
+				var L=ev.clientX-disX;
+				var T=ev.clientY-disY;
+
+				if(T<0){
+					T=0;
+				}else if(T>document.documentElement.clientHeight-oDiv.offsetHeight){
+					T=document.documentElement.clientHeight-oDiv.offsetHeight;
+				}
+				if(L<0){
+					L=0;
+				}else if(L>document.documentElement.clientWidth-oDiv.offsetWidth){
+					L=document.documentElement.clientWidth-oDiv.offsetWidth;
+				}
+
+				arrL.push(L);
+				arrT.push(T);
+
+				oDiv.style.left=L+'px';
+				oDiv.style.top=T+'px';
+
+			}
+
+			document.onmouseup=function(){
+				document.onmousemove=document.onmouseup=null;
+
+				if( oDiv.releaseCapture ){ oDiv.releaseCapture(); }
+
+			}
+
+			return false;
+		}
+
+		oBtn.onclick=function(){
+			var n=arrL.length-1;
+
+			timer=setInterval(function(){
+				oDiv.style.left=arrL[n]+'px';
+				oDiv.style.top=arrT[n]+'px';
+				n--;
+
+				if(n==-1){
+					clearInterval(timer);
+					arrL=[0];
+					arrT=[40];
+				}
+			},20);
+		}
+	})();
+	
+</script>
+</body>
+</html>

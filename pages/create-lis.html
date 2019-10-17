@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<link rel="icon" href="../img/ico.ico">
+<link rel="stylesheet" href="../css/css.css">
+<script src="../js/js.js"></script>
+<style>
+	input { display: block; margin: 20px auto; }
+	ul { position: relative; width: 590px; height: 590px; background: #eee; margin: 20px auto; }
+	li { width: 50px; height: 50px; position: absolute; left: 0; top: 0; color: white; font-size: 30px; line-height: 50px; text-align: center; font-weight: bold; }
+
+</style>
+</head>
+
+<body>
+<input type="button" value="自动生成100个 li">
+<ul></ul>
+
+<script>
+	(function(){
+		var btn=document.getElementsByTagName('input')[0];
+		var oUl=document.getElementsByTagName('ul')[0];
+		var aColor=['red', 'green', 'blue', 'orange'];
+		var aLi=null;
+
+		var on=true;
+		btn.onclick=function(){
+			if(on){
+				for(var i=0;i<100;i++){
+					oUl.innerHTML+='<li>'+i+'</li>';
+				}
+
+				aLi=oUl.getElementsByTagName('li');
+
+				for(var i=0;i<aLi.length;i++){
+					aLi[i].style.background=aColor[i%4];
+					aLi[i].style.left=i%10*60+'px';
+					aLi[i].style.top=(i-(i%10))*6+'px';
+				}
+			}
+			on=false;
+		}
+	})();
+	
+</script>
+</body>
+</html>

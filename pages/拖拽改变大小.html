@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<link rel="icon" href="../img/ico.ico">
+<link rel="stylesheet" href="../css/css.css">
+<script src="../js/js.js"></script>
+<style>
+	div { width: 200px; height: 150px; background: #faf; position: relative; margin: 200px; }
+	span { width: 10px; height: 10px; background: url(../img/se.png) 0 0 no-repeat; position: absolute; right: 0px; bottom: 0px; cursor: se-resize; }
+</style>
+</head>
+
+<body>
+<div>
+	<span></span>
+</div>
+
+<script>
+(function(){
+	var oSpan=document.getElementsByTagName('span')[0];
+	var oDiv=document.getElementsByTagName('div')[0];
+	
+	oSpan.onmousedown=function(ev){
+		var ev=ev || event;
+		
+		var disX=ev.clientX-this.offsetLeft;
+		var disY=ev.clientY-this.offsetTop;
+		
+		if( this.setCapture ){
+			this.setCapture();
+		}
+		
+		document.onmousemove=function(ev){
+			var ev=ev || event;
+			var W=ev.clientX-disX+oSpan.offsetWidth;
+			var H=ev.clientY-disY+oSpan.offsetHeight;
+			
+			W=W<200?200:W;
+			H=H<150?150:H;
+			
+			oDiv.style.width=W+'px';
+			oDiv.style.height=H+'px';
+		}
+		
+		document.onmouseup=function(){
+			document.onmousemove=document.onmouseup=null;
+			
+			if( oSpan.releaseCapture ){
+				oSpan.releaseCapture();
+			}
+		}
+		
+		return false;
+	}
+})();
+</script>
+</body>
+</html>

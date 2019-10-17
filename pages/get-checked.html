@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<link rel="icon" href="../img/ico.ico">
+<link rel="stylesheet" href="../css/css.css">
+<script src="../js/js.js"></script>
+<style>
+	form {
+		width: 598px; border: 1px solid #eee; border-radius: 10px; margin: 50px auto; padding: 20px; line-height: 30px;
+		position: relative;
+	}
+	label:first-child {
+		font-weight: bold;
+	}
+	#showbox1, #showbox2 {
+		width: 160px; border: 1px solid #ddd; position: absolute; background: #ffa; padding: 20px; top: 30px; right: 30px; display: none;
+	}
+	input[type='reset'] {
+		position: absolute; right: 30px; bottom: 30px; width: 48px; height: 24px;
+	}
+</style>
+</head>
+
+<body>
+<form>
+	<label>您的月收入水平是：</label><br>
+	<input type="radio" name="income" value="1000元以下" id="r1"> <label for="r1">1000元以下</label> <br>
+	<input type="radio" name="income" value="1000~3000元" id="r2"> <label for="r2">1000~3000元</label> <br>
+	<input type="radio" name="income" value="3000~5000元" id="r3"> <label for="r3">3000~5000元</label> <br>
+	<input type="radio" name="income" value="5000~10000元" id="r4"> <label for="r4">5000~10000元</label> <br>
+	<input type="radio" name="income" value="10000~20000元" id="r5"> <label for="r5">10000~20000元</label> <br>
+	<input type="radio" name="income" value="20000元以上" id="r6"> <label for="r6">20000元以上</label> <br>
+	<div id="showbox1"></div>
+	<input type="reset" name="reset" value="重置">
+</form>
+<form>
+	<label>您的性格是：</label><br> 
+	<input type="checkbox" name="character" value="开朗" id="c1"> <label for="c1">开朗</label> <br>
+	<input type="checkbox" name="character" value="随性" id="c2"> <label for="c2">随性</label> <br>
+	<input type="checkbox" name="character" value="阴郁" id="c3"> <label for="c3">阴郁</label> <br>
+	<input type="checkbox" name="character" value="果断" id="c4"> <label for="c4">果断</label> <br>
+	<input type="checkbox" name="character" value="冷静" id="c5"> <label for="c5">冷静</label> <br>
+	<input type="checkbox" name="character" value="奔放" id="c6"> <label for="c6">奔放</label> <br>
+	<input type="checkbox" name="character" value="内敛" id="c7"> <label for="c7">内敛</label> <br>
+	<input type="checkbox" name="character" value="稳重" id="c8"> <label for="c8">稳重</label> <br>
+	<div id="showbox2"></div>
+	<input type="reset" name="reset" value="重置">
+</form>
+
+
+<script>
+	(function(){
+		show(document.forms[0], 'income', '您的月收入水平是：' );
+		show(document.forms[1], 'character', '您的性格是：' );
+
+		document.forms[0].onreset=document.forms[1].onreset=function(){
+			reSet(this);
+		}
+
+		function show( form, name, str ){
+			for( var i=0; i<form[name].length; i++ ){
+				form[name][i].onclick=function(){
+					var showBox=form.getElementsByTagName('div')[0];
+
+					showBox.style.display='block';
+					if(this.type=='radio'){
+						showBox.innerHTML=str + getChecked( form, name )[0];
+					}else if(this.type=='checkbox'){
+						showBox.innerHTML=str + getChecked( form, name ).join('，');
+					}
+				}
+			}
+		}
+
+		function reSet(form){
+			var re=confirm('你确定要重置吗？');
+			var showBox=form.getElementsByTagName('div')[0];
+
+			if(re){
+				showBox.style.display='none';
+				return true;
+			}else{
+				return false;
+			}
+		}
+	})();
+	
+</script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<link rel="icon" href="../img/ico.ico">
+<link rel="stylesheet" href="../css/css.css">
+<script src="../js/js.js"></script>
+<style>
+	#tab_container { width: 300px; border: 4px solid #BADBF5; margin: 50px auto; }
+	#tab_container #tab_top { width: 280px; height: 50px; padding: 10px 10px 0 10px; background: #CEE5F7; border-bottom: 1px solid #9BC5C5; position: relative; }
+	#tab_container #tab_top h3 { position: absolute; left: 10px; top: 20px; }
+	#tab_container #tab_top span { position: absolute; font-size: 12px; right: 10px; bottom: -1px; }
+	#tab_container #tab_top a { display: inline-block; border: 1px solid #9BC5C5; padding: 5px; color: #1b68a1; font-weight: bold; }
+	#tab_container ul { width: 280px; padding: 0 10px; background: #CEE5F7; font-size: 12px; }
+	#tab_container ul:after, #tab_container ul li:after { content: ""; display: block; clear: both; }
+	#tab_container ul li { line-height: 36px; cursor: pointer; border-bottom: 1px dashed #9BC5C5; }
+	#tab_container ul strong { width: 24px; height: 24px; line-height: 24px; text-align: center; background: #1b68a1; color: #fff; float: left; margin: 6px 0 0 6px; }
+	#tab_container ul span { margin-left: 10px; float: left; display: block; }
+	#tab_container ul div { width: 240px; height: 68px; float: right; margin-top: 6px; display: none; position: relative; }
+	#tab_container ul img { width: 60px; height: 60px; border: 1px solid #ccc; float: left; }
+	#tab_container ul img:hover { border-color: #1b68a1; }
+	#tab_container ul a {  color: #333; float: right; width: 164px; line-height: 20px; margin-right: 6px; }
+	#tab_container ul a:hover { text-decoration: underline;  }
+	#tab_container ul b { position: absolute; right: 6px; bottom: 6px; width: 40px; height: 24px; line-height: 24px; text-align: center; background: #1b68a1; color: #fff; font-weight: normal; }
+	#tab_container ul b:hover { background: #1F77B9; }
+</style>
+</head>
+
+<body>
+<div id="tab_container">
+	<div id="tab_top">
+		<h3>排行榜</h3>
+		<span>
+			<a href="javascript:;">每周</a>
+			<a href="javascript:;">每日</a>
+			<a href="javascript:;">全部</a>
+		</span>
+	</div>
+</div>
+
+<script>
+	(function(){
+		var tabContainer=document.getElementById('tab_container');
+		var tabTop=document.getElementById('tab_top');
+		var aA=tabTop.getElementsByTagName('a');
+		var aUl=tabContainer.getElementsByTagName('ul');
+		var aSrc=['../img/hismap/1.png', '../img/hismap/2.png', '../img/hismap/3.png'];
+		var aStr=['每周：探寻传国玉玺的千古传奇', '每日：百慕大至今未解之谜', '全部：中国大陆的前世今生'];
+
+		var fragment=document.createDocumentFragment();
+
+		for( var i=0; i<3; i++ ){
+			var oUl=document.createElement('ul');
+			for( var j=0; j<8; j++ ){
+				oUl.innerHTML+='<li><strong>0'+ (j+1) + '</strong><span>' + aStr[i] + '</span><div><img src="' + aSrc[i] + '"><a href="javascript:;">' + aStr[i] + '</a><b>进入</b></div></li>';
+			}
+			fragment.appendChild(oUl);
+		}
+
+		tabContainer.appendChild(fragment);
+
+		for( var i=0; i<aUl.length; i++ ){
+			aUl[i].children[0].style.background='#fff';
+			aUl[i].children[0].children[1].style.display='none';
+			aUl[i].children[0].children[2].style.display='block';
+		}
+
+		function toggle(n){
+			for( var i=0; i<aUl.length; i++ ){
+				aUl[i].style.display='none';
+				aA[i].style.background='0';
+			}
+			aUl[n].style.display='block';
+			aA[n].style.background='#fff';
+			fn( aUl[n] );
+		}
+
+		toggle(0);
+
+		for( var i=0; i<aA.length; i++ ){
+			aA[i].index=i;
+			aA[i].onclick=function(){
+				toggle( this.index );
+			}
+		}
+
+		function fn( ul ){
+			var aLi=ul.getElementsByTagName('li');
+
+			for( var i=0; i<aLi.length; i++ ){
+				aLi[i].onmouseover=function(){
+					for( var i=0; i<aLi.length; i++ ){
+						aLi[i].style.background='0';
+						aLi[i].children[1].style.display='block';
+						aLi[i].children[2].style.display='none';
+					}
+					this.style.background='#fff';
+					this.children[1].style.display='none';
+					this.children[2].style.display='block';
+				}
+			}
+		}
+	})();
+	
+</script>
+</body>
+</html>

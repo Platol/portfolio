@@ -1,0 +1,190 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<link rel="icon" href="../img/ico.ico">
+<link rel="stylesheet" href="../css/css.css">
+<script src="../js/js.js"></script>
+<style>
+	ul {
+		width: 660px; padding: 10px; margin: 50px auto; border: 5px solid #faf; position: relative;
+	}
+	ul:after {
+		content: ""; display: block; clear: both;
+	}
+	ul .active {
+		border: 1px dashed red; width: 198px; height: 148px;
+	}
+	li {
+		width: 200px; height: 150px; float: left; margin: 10px;
+	}
+	img {
+		width: 100%; height: 100%;
+	}
+	
+</style>
+</head>
+
+<body>
+<ul>
+	<li><img src="../img/photowall/01.jpg"></li>
+	<li><img src="../img/photowall/02.jpg"></li>
+	<li><img src="../img/photowall/03.jpg"></li>
+	<li><img src="../img/photowall/04.jpg"></li>
+	<li><img src="../img/photowall/05.jpg"></li>
+	<li><img src="../img/photowall/06.jpg"></li>
+	<li><img src="../img/photowall/07.jpg"></li>
+	<li><img src="../img/photowall/08.jpg"></li>
+	<li><img src="../img/photowall/09.jpg"></li>
+</ul>
+
+<script>
+	(function(){
+		var oUl=document.getElementsByTagName('ul')[0];
+		var aLi=oUl.getElementsByTagName('li');
+		var aPos=[];
+		var minZIndex=2;
+
+		for( var i=0; i<aLi.length; i++ ){
+			aPos[i]={left: aLi[i].offsetLeft, top: aLi[i].offsetTop};
+		}
+
+		oUl.style.height=oUl.clientHeight-20+'px';
+
+		for( var i=0; i<aLi.length; i++ ){
+			aLi[i].style.position='absolute';
+			aLi[i].style.left=aPos[i].left+'px';
+			aLi[i].style.top=aPos[i].top+'px';
+			aLi[i].style.margin=0;
+			aLi[i].index=i;
+		}
+
+
+		for( var i=0; i<aLi.length; i++ ){
+			setDrag(aLi[i]);
+		}
+
+
+		//拖拽
+		function setDrag( obj ){
+			obj.onmousedown=function( ev ){
+				var ev = ev || event;
+
+				obj.style.zIndex=minZIndex++;
+
+				var disX = ev.clientX - obj.offsetLeft;
+				var disY = ev.clientY - obj.offsetTop;
+
+				if( obj.setCapture ){
+					obj.setCapture();
+				}
+
+				document.onmousemove=function( ev ){
+					var ev = ev || event;
+
+					var L = ev.clientX - disX;
+					var T = ev.clientY - disY;
+
+					obj.style.left = L + 'px';
+					obj.style.top = T + 'px';
+
+					for( var i=0; i<aLi.length; i++ ){
+						aLi[i].className='';
+					}
+
+					var oNear=findNearest(obj);
+
+					if(oNear){
+						oNear.className='active';
+					}
+				}
+
+				document.onmouseup=function(){
+
+					document.onmousemove = document.onmouseup = null;
+
+					var oNear=findNearest(obj);
+
+					if(oNear){
+						oNear.className='';
+
+						oNear.style.zIndex=minZIndex++;
+						obj.style.zIndex=minZIndex++;
+
+						animate(oNear, aPos[obj.index], 8);
+						animate(obj, aPos[oNear.index], 8);
+
+						var tmp=0;
+						tmp=obj.index;
+						obj.index=oNear.index;
+						oNear.index=tmp;
+					}else{
+						animate(obj, aPos[obj.index], 8);
+					}
+
+					if( obj.releaseCapture ){
+						obj.releaseCapture();
+					}
+				}
+
+				return false;
+			}
+		}
+
+		//碰撞检测
+		function cdTest( obj1, obj2 ){
+			var l1=obj1.offsetLeft;
+			var r1=obj1.offsetLeft+obj1.offsetWidth;
+			var t1=obj1.offsetTop;
+			var b1=obj1.offsetTop+obj1.offsetHeight;
+
+			var l2=obj2.offsetLeft;
+			var r2=obj2.offsetLeft+obj2.offsetWidth;
+			var t2=obj2.offsetTop;
+			var b2=obj2.offsetTop+obj2.offsetHeight;
+
+			if( r1<l2 || l1>r2 || b1<t2 || t1>b2 ){
+				return false;
+			}else{
+				return true;
+			}
+		}
+
+		//计算两个物体中心到中心的距离
+		function getDis(obj1, obj2){
+			var a=obj1.offsetLeft-obj2.offsetLeft;
+			var b=obj1.offsetTop-obj2.offsetTop;
+
+			return Math.sqrt(a*a+b*b);
+		}
+
+		//找最近的元素
+		function findNearest(obj){
+			var iMin=999999999;
+			var iMinIndex=-1;
+
+			for(i=0;i<aLi.length;i++){
+				if(obj==aLi[i])continue;
+
+				if(cdTest(obj, aLi[i])){
+					var dis=getDis(obj, aLi[i]);
+
+					if(iMin>dis){
+						iMin=dis;
+						iMinIndex=i;
+					}
+				}
+			}
+
+			if(iMinIndex==-1){
+				return null;
+			}else{
+				return aLi[iMinIndex];
+			}
+		}
+	})();
+
+</script>
+</body>
+</html>

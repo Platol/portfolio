@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<link rel="icon" href="../img/ico.ico">
+<link rel="stylesheet" href="../css/css.css">
+<script src="../js/js.js"></script>
+<style>
+	img { width: 790px; height: 340px; border: 1px solid red; }
+</style>
+</head>
+
+<body>
+<img src="https://raw.githubusercontent.com/cc-cyrus/cc-cyrus.github.io/master/img/jd/2.jpg">
+
+<script>
+(function(){
+	var img=document.getElementsByTagName('img')[0];
+	var oImg=new Image();
+
+	oImg.src='https://raw.githubusercontent.com/cc-cyrus/cc-cyrus.github.io/master/img/jd/5.jpg';
+
+	oImg.onload=function(){
+		alert( '图片预加载已完成' );
+	}
+	oImg.onerror=function(){
+		alert( '图片预加载失败' );
+	}
+
+	img.onmouseover=function(){
+		this.src='https://raw.githubusercontent.com/cc-cyrus/cc-cyrus.github.io/master/img/jd/5.jpg';
+	}
+	img.onmouseout=function(){
+		this.src='https://raw.githubusercontent.com/cc-cyrus/cc-cyrus.github.io/master/img/jd/2.jpg';
+	}
+})();
+</script>
+</body>
+</html>

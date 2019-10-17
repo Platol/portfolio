@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<link rel="icon" href="../img/ico.ico">
+<link rel="stylesheet" href="../css/css.css">
+<script src="../js/js.js"></script>
+<style>
+	div {
+		border: 2px solid pink;
+		padding: 5px;
+		width: 294px;
+		margin: 50px auto;
+	}
+	div:after {
+		content: ""; display: block; clear: both;
+	}
+	li {
+		border: 1px solid pink;
+		width: 50px;
+		height: 24px;
+		line-height: 24px;
+		text-align: center;
+		font-size: 12px;
+		vertical-align: top;
+	}
+	a {
+		display: block;
+		color: #333;
+	}
+	div ul, div img {
+		float: left;
+	}
+	img {
+		margin: 0 4px;
+		border: 1px dashed pink;
+	}
+
+</style>
+</head>
+
+<body>
+<div>
+	<ul>
+		<li><a href="#">连衣裙</a></li>
+		<li><a href="#">雪纺</a></li>
+		<li><a href="#">T恤</a></li>
+		<li><a href="#">铅笔裤</a></li>
+		<li><a href="#">婚纱</a></li>
+		<li><a href="#">外套</a></li>
+		<li><a href="#">连体裤</a></li>
+	</ul>
+	<img>
+	<ul>
+		<li><a href="#">包包</a></li>
+		<li><a href="#">凉鞋</a></li>
+		<li><a href="#">单鞋</a></li>
+		<li><a href="#">太阳镜</a></li>
+		<li><a href="#">丝袜</a></li>
+		<li><a href="#">帆布鞋</a></li>
+		<li><a href="#">情侣装</a></li>
+	</ul>
+</div>
+
+<script>
+(function(){
+	var oUlL=document.getElementsByTagName('ul')[0];
+	var aLiL=oUlL.getElementsByTagName('li');
+	var oUlR=document.getElementsByTagName('ul')[1];
+	var aLiR=oUlR.getElementsByTagName('li');
+	var oImg=document.getElementsByTagName('img')[0];
+	var arr=[];
+	var n=0;
+	
+	for( var i=0; i<aLiL.length; i++ ){
+		arr.push( aLiL[i] );
+	}
+	
+	for( var i=aLiR.length-1; i>-1; i-- ){
+		arr.push( aLiR[i] );
+	}
+	
+	function fn(){
+		for( var i=0; i<arr.length; i++ ){
+			arr[i].style.background='0';
+			arr[i].children[0].style.color='#333';
+		}
+		arr[n].style.background='pink';
+		arr[n].children[0].style.color='#fff';
+		oImg.src = '../img/goods/' + (n+1) + '.png';
+	}
+	
+	fn();
+	
+	function auto(){
+		n++;
+		n%=arr.length;
+		fn();
+	}
+	
+	var timer=setInterval(auto, 1000);
+	
+	for( var i=0; i<arr.length; i++ ){
+		arr[i].index=i;
+		
+		arr[i].onmouseover=function(){
+			clearInterval(timer);
+			
+			var flag=n;
+			
+			n=this.index;
+			
+			fn();
+			
+			n=flag;
+		}
+		
+		arr[i].onmouseout=function(){
+			timer=setInterval(auto, 1000);
+		}
+	}
+})();
+</script>
+</body>
+</html>
