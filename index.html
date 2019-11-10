@@ -1,179 +1,202 @@
 ﻿<!doctype html>
 <html>
+
 <head>
-<meta charset="utf-8">
-<title></title>
-<link rel="icon" href="img/ico.ico">
-<link rel="stylesheet" href="css/css.css">
-<script src="js/js.js"></script>
-<style>
-	body {
-		background: #fff; font-family: 华文中宋;
-	}
-	#wrap {
-		width: 508px; padding: 40px; border: 6px solid #fbfbfb; border-radius: 10px; margin: 50px auto; background: #f8f5e6;
-	}
-	#wrap>li {
-		padding: 5px 0; border-bottom: 1px solid #e9e0b2;
-	}
-	#wrap>li ul {
-		display: none;
-	}
-	h2 {
-		cursor: pointer; padding: 15px 0 15px 20px; color: #1466B9; border-radius: 6px;
-	}
-	h2:hover {
-		background: #d64a28; color: #fff;
-	}
-	#wrap>li li { margin-top: 1px; }
-	a {
-		display: block; width: 440px; padding: 10px 0 10px 30px; margin-left: 20px; color: #1466B9; border-radius: 4px; font-size: 20px; background: #f8f5e6;
-	}
-	a:hover {
-		background: #e66a18; color: #fff;
-	}
-</style>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="icon" href="img/ico.ico">
+    <link rel="stylesheet" href="css/css.css">
+    <script src="js/js.js"></script>
+    <style>
+        body {
+            background: #fff;
+            font-family: 苹方;
+        }
+        #wrap {
+            width: 508px;
+            padding: 40px;
+            border: 6px solid #fbfbfb;
+            border-radius: 10px;
+            margin: 0 auto;
+            background: #f8f5e6;
+        }
+        #wrap>li {
+            padding: 5px 0;
+            border-bottom: 1px solid #e9e0b2;
+        }
+        #wrap>li ul {
+            display: none;
+        }
+        h2 {
+            cursor: pointer;
+            padding: 15px 0 15px 20px;
+            color: #1466B9;
+            border-radius: 6px;
+        }
+        h2:hover {
+            background: #d64a28;
+            color: #fff;
+        }
+        #wrap>li li {
+            margin-top: 1px;
+        }
+        a {
+            display: block;
+            width: 440px;
+            padding: 10px 0 10px 30px;
+            margin-left: 20px;
+            color: #1466B9;
+            border-radius: 4px;
+            font-size: 20px;
+            background: #f8f5e6;
+        }
+        a:hover {
+            background: #e66a18;
+            color: #fff;
+        }
+    </style>
 </head>
 
 <body>
-<ul id="wrap">
-	<li>
-		<h2>CH01：图片及展示</h2>
-		<ul>
-			<li><a href="pages/banner-fade.html">电商banner-淡入淡出切换</a></li>
-			<li><a href="pages/banner-slide.html">电商banner-滑动切换</a></li>
-			<li><a href="pages/img-scroll-free.html">图片随机滚动</a></li>
-			<li><a href="pages/ad-auto-cycle.html">电商广告循环展示</a></li>
-			<li><a href="pages/accordion.html">手风琴</a></li>
-		</ul>
-	</li>
-	<li>
-		<h2>CH02：内容与功能</h2>
-		<ul>
-			<li><a href="pages/comment.html">星级评论</a></li>
-			<li><a href="pages/right-sides-toolbar.html">电商右侧工具条</a></li>
-			<li><a href="pages/tab-list.html">选项卡及列表切换</a></li>
-			<li><a href="pages/nav-timer.html">定时器导航</a></li>
-			<li><a href="pages/button-effect.html">按钮小效果</a></li>
-			<li><a href="pages/date.html">日期&时间</a></li>
-			<li><a href="pages/countdown.html">倒计时</a></li>
-			<li><a href="pages/keyword-search.html">查找关键字</a></li>
-			<li><a href="pages/keyword-replace.html">替换关键字</a></li>
-			<li><a href="pages/carry-words.html">文字搬运</a></li>
-			<li><a href="pages/list-tip.html">列表弹出提示</a></li>
-			<li><a href="pages/popup.html">页面居中弹窗（不用scrollTop）</a></li>
-		</ul>
-	</li>
-	<li>
-		<h2>CH03：表格和表单</h2>
-		<ul>
-			<li><a href="pages/get-checked.html">获取表单控件radio、checkbox的选中值</a></li>
-			<li><a href="pages/table-and-form.html">表格表单综合：增、删、隔行变色……</a></li>
-			<li><a href="pages/select-imitate.html">模拟select单选</a></li>
-			<li><a href="pages/select-imitate-multiple.html">模拟select多选（Ctrl键+鼠标左键）</a></li>
-		</ul>
-	</li>
-	<li>
-		<h2>CH04：页面布局</h2>
-		<ul>
-			<li><a href="layout/ms/index.html">微软Bootstrap响应式布局</a></li>
-			<li><a href="layout/gh/index.html">GitHub[原生]响应式布局</a></li>
-			<li><a href="layout/jd/index.html">京东布局（未完，待续……）</a></li>
-		</ul>
-	</li>
-	<li>
-		<h2>CH05：JS深入应用</h2>
-		<ul>
-			<li><a href="pages/drag-basic.html">固定区域内进行拖拽</a></li>
-			<li><a href="pages/drag-adsorbent.html">拖拽之磁性吸附</a></li>
-			<li><a href="pages/apple-mac-menu-imitate.html">模拟苹果Mac菜单</a></li>
-			<li><a href="pages/photo-wall.html">照片墙-图片换位</a></li>
-			<li><a href="pages/onkeydown-move.html">解决按键移动时的停顿问题</a></li>
-			<li><a href="pages/draw-div.html">鼠标绘制正方形</a></li>
-			<li><a href="pages/drag-playback.html">拖拽过程回放</a></li>
-		</ul>
-	</li>
-	<li>
-		<h2>CH06：Ajax技术</h2>
-		<ul>
-			<li><a href="ajax/001/index.html">ajax实现级联菜单</a></li>
-			<li><a href="ajax/002-waterfall/index.html">ajax实现瀑布流</a></li>
-		</ul>
-	</li>
-	<li>
-		<h2>CH07：CSS3动效</h2>
-		<ul>
-			<li><a href="pages/clock.html">表盘</a></li>
-			<li><a href="pages/fan-menu.html">扇形菜单</a></li>
-		</ul>
-	</li>
-	<li>
-		<h2>CH08：小游戏</h2>
-		<ul>
-			<li><a href="pages/remove-emoji-game.html">消除QQ表情小游戏</a></li>
-		</ul>
-	</li>
-	<li>
-		<h2>CH09：其他实例</h2>
-		<ul>
-			<li><a href="pages/vvv.html">V</a></li>
-			<li><a href="pages/create-lis.html">自动生成100个li</a></li>
-			<li><a href="pages/img-brush.html">擦出图片</a></li>
-			<li><a href="pages/table-imitate.html">模拟表格</a></li>
-			<li><a href="pages/shake.html">抖一抖</a></li>
-			<li><a href="pages/random-integer.html">100个1000以内的随机整数</a></li>
-		</ul>
-	</li>
-</ul>
+    <ul id="wrap">
+        <li>
+            <h2>CH01：图片及展示</h2>
+            <ul>
+                <li><a href="pages/banner-fade.html">电商banner-淡入淡出切换</a></li>
+                <li><a href="pages/banner-slide.html">电商banner-滑动切换</a></li>
+                <li><a href="pages/img-scroll-free.html">图片随机滚动</a></li>
+                <li><a href="pages/ad-auto-cycle.html">电商广告循环展示</a></li>
+                <li><a href="pages/accordion.html">手风琴</a></li>
+            </ul>
+        </li>
+        <li>
+            <h2>CH02：内容与功能</h2>
+            <ul>
+                <li><a href="pages/comment.html">星级评论</a></li>
+                <li><a href="pages/right-sides-toolbar.html">电商右侧工具条</a></li>
+                <li><a href="pages/tab-list.html">选项卡及列表切换</a></li>
+                <li><a href="pages/nav-timer.html">定时器导航</a></li>
+                <li><a href="pages/button-effect.html">按钮小效果</a></li>
+                <li><a href="pages/date.html">日期&时间</a></li>
+                <li><a href="pages/countdown.html">倒计时</a></li>
+                <li><a href="pages/keyword-search.html">查找关键字</a></li>
+                <li><a href="pages/keyword-replace.html">替换关键字</a></li>
+                <li><a href="pages/carry-words.html">文字搬运</a></li>
+                <li><a href="pages/list-tip.html">列表弹出提示</a></li>
+                <li><a href="pages/popup.html">页面居中弹窗（不用scrollTop）</a></li>
+            </ul>
+        </li>
+        <li>
+            <h2>CH03：表格和表单</h2>
+            <ul>
+                <li><a href="pages/get-checked.html">获取表单控件radio、checkbox的选中值</a></li>
+                <li><a href="pages/table-and-form.html">表格表单综合：增、删、隔行变色……</a></li>
+                <li><a href="pages/select-imitate.html">模拟select单选</a></li>
+                <li><a href="pages/select-imitate-multiple.html">模拟select多选（Ctrl键+鼠标左键）</a></li>
+            </ul>
+        </li>
+        <li>
+            <h2>CH04：页面布局</h2>
+            <ul>
+                <li><a href="layout/ms/index.html">微软Bootstrap响应式布局</a></li>
+                <li><a href="layout/gh/index.html">GitHub[原生]响应式布局</a></li>
+                <li><a href="layout/jd/index.html">京东布局（未完，待续……）</a></li>
+            </ul>
+        </li>
+        <li>
+            <h2>CH05：JS深入应用</h2>
+            <ul>
+                <li><a href="pages/drag-basic.html">固定区域内进行拖拽</a></li>
+                <li><a href="pages/drag-adsorbent.html">拖拽之磁性吸附</a></li>
+                <li><a href="pages/apple-mac-menu-imitate.html">模拟苹果Mac菜单</a></li>
+                <li><a href="pages/photo-wall.html">照片墙-图片换位</a></li>
+                <li><a href="pages/onkeydown-move.html">解决按键移动时的停顿问题</a></li>
+                <li><a href="pages/draw-div.html">鼠标绘制正方形</a></li>
+                <li><a href="pages/drag-playback.html">拖拽过程回放</a></li>
+            </ul>
+        </li>
+        <li>
+            <h2>CH06：Ajax技术</h2>
+            <ul>
+                <li><a href="ajax/001/index.html">ajax实现级联菜单</a></li>
+                <li><a href="ajax/002-waterfall/index.html">ajax实现瀑布流</a></li>
+            </ul>
+        </li>
+        <li>
+            <h2>CH07：CSS3动效</h2>
+            <ul>
+                <li><a href="pages/clock.html">表盘</a></li>
+                <li><a href="pages/fan-menu.html">扇形菜单</a></li>
+            </ul>
+        </li>
+        <li>
+            <h2>CH08：小游戏</h2>
+            <ul>
+                <li><a href="pages/remove-emoji-game.html">消除QQ表情小游戏</a></li>
+            </ul>
+        </li>
+        <li>
+            <h2>CH09：其他实例</h2>
+            <ul>
+                <li><a href="pages/vvv.html">V</a></li>
+                <li><a href="pages/create-lis.html">自动生成100个li</a></li>
+                <li><a href="pages/img-brush.html">擦出图片</a></li>
+                <li><a href="pages/table-imitate.html">模拟表格</a></li>
+                <li><a href="pages/shake.html">抖一抖</a></li>
+                <li><a href="pages/random-integer.html">100个1000以内的随机整数</a></li>
+            </ul>
+        </li>
+    </ul>
 
-<script>
-	(function(){
-		var oUl=document.getElementById('wrap');
-		var aH2=oUl.getElementsByTagName('h2');
-		var aA=oUl.getElementsByTagName('a');
+    <script>
+        (function () {
+            var wrap = document.getElementById('wrap');
+            var titles = wrap.getElementsByTagName('h2');
+            var subTitles = wrap.getElementsByTagName('a');
 
-		for(var i=0; i<aA.length; i++){
-			aA[i].target='_blank';
-			aA[i].onmouseover=function(){
-				animate( this, {'paddingLeft': 40, 'width': 430}, 8 );
-			}
-			aA[i].onmouseout=function(){
-				animate( this, {'paddingLeft': 30, 'width': 440}, 8 );
-			}
-		}
+            for (var i = 0; i < subTitles.length; i++) {
+                subTitles[i].target = '_blank';
+                subTitles[i].onmouseover = function () {
+                    animate(this, { 'paddingLeft': 40, 'width': 430 }, 8);
+                }
+                subTitles[i].onmouseout = function () {
+                    animate(this, { 'paddingLeft': 30, 'width': 440 }, 8);
+                }
+            }
 
-		var lastLi=oUl.lastElementChild || oUl.lastChild;
+            var lastLi = wrap.lastElementChild || wrap.lastChild;
 
-		lastLi.style.borderBottom='none';
+            lastLi.style.borderBottom = 'none';
 
-		for(var i=0; i<aH2.length; i++){
-			aH2[i].onclick=function(){
-				if(this.clicked){
-					getNext(this).style.display='none';
-					this.clicked=false;
-				}else{
-					for(var j=0; j<aH2.length; j++){					
-						getNext(aH2[j]).style.display='none';
-						aH2[j].clicked=false;
-					}
+            for (var i = 0; i < titles.length; i++) {
+                titles[i].onclick = function () {
+                    if (this.clicked) {
+                        getNext(this).style.display = 'none';
+                        this.clicked = false;
+                    } else {
+                        for (var j = 0; j < titles.length; j++) {
+                            getNext(titles[j]).style.display = 'none';
+                            titles[j].clicked = false;
+                        }
 
-					getNext(this).style.display='block';
-					this.clicked=true;
-				}
-			}
-			aH2[i].onmouseover=function(){
-				linearMove(this, 'paddingLeft', 2, 40);
-			}
-			aH2[i].onmouseout=function(){
-				linearMove(this, 'paddingLeft', 2, 20);
-			}
-		}
+                        getNext(this).style.display = 'block';
+                        this.clicked = true;
+                    }
+                }
+                titles[i].onmouseover = function () {
+                    linearMove(this, 'paddingLeft', 2, 40);
+                }
+                titles[i].onmouseout = function () {
+                    linearMove(this, 'paddingLeft', 2, 20);
+                }
+            }
 
-		document.onselectstart=function(){
-			return false;
-		}
-	})();
-	
-</script>
+            document.onselectstart = function () {
+                return false;
+            }
+        })();
+
+    </script>
 </body>
+
 </html>
