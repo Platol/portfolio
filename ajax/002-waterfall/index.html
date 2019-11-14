@@ -13,28 +13,34 @@
             margin: 0;
             background: #f5f5f5;
         }
+
         ul {
             margin: 0;
             padding: 0;
             list-style: none;
         }
+
         p {
             margin: 0;
             padding: 0;
         }
+
         #waterfall {
             width: 1048px;
             margin: 0 auto;
         }
+
         #waterfall:after {
             content: "";
             display: block;
             clear: both;
         }
+
         #waterfall li {
             float: left;
             margin: 0 10px;
         }
+
         #waterfall div {
             width: 220px;
             padding: 10px;
@@ -43,9 +49,11 @@
             background: #fff;
             border-radius: 5px;
         }
+
         #waterfall img {
             width: 220px;
         }
+
         #waterfall p {
             padding-top: 10px;
             color: #666;
@@ -88,24 +96,52 @@
             }
 
             function getList() {
-                ajax('get', '01.php', 'cpage=' + page, function (data) {
+                /** 
+                 * 接口：'https://api.apiopen.top/getImages'
+                 * 参数（可选）：page、count
+                 * 返回示例：
+                 * {
+                        "code": 200,
+                        "message": "成功!",
+                        "result": [
+                            {
+                                "id": 596,
+                                "time": "2018-09-18 17:52:43",
+                                "img": "http://ww4.sinaimg.cn/large/7a8aed7bgw1eurhwfc5z7j20hs0qomzz.jpg"
+                            },
+                            {
+                                "id": 597,
+                                "time": "2018-09-18 17:52:43",
+                                "img": "http://ww3.sinaimg.cn/large/7a8aed7bgw1eup75gxp8qj20hr0qoae8.jpg"
+                            },
+                            {
+                                "id": 598,
+                                "time": "2018-09-18 17:52:43",
+                                "img": "http://ww2.sinaimg.cn/large/7a8aed7bgw1eukj6vosygj20gs0p0act.jpg"
+                            },
+                            ...
+                        ]
+                    }
+                */
+                
+                ajax('get', 'https://api.apiopen.top/getImages', 'page=' + page, function (data) {
                     var data = JSON.parse(data);
 
-                    if (!data.length) {
+                    if (!data.result.length) {
                         return;
                     }
 
-                    for (var i = 0; i < data.length; i++) {
+                    for (var i = 0; i < data.result.length; i++) {
                         var _index = getShort();
                         var div = document.createElement('div');
                         var img = document.createElement('img');
                         var p = document.createElement('p');
 
-                        img.src = data[i].preview;
+                        img.src = data.result[i].img;
                         img.style.width = '220px';
-                        img.style.height = data[i].height * (220 / data[i].width) + 'px';
+                        img.style.height = data.result[i].height * (220 / data.result[i].width) + 'px';
                         div.appendChild(img);
-                        p.innerHTML = data[i].title;
+                        p.innerHTML = data.result[i].title;
                         div.appendChild(p);
 
                         lis[_index].appendChild(div);
@@ -126,6 +162,7 @@
                         iH = lis[i].offsetHeight;
                     }
                 }
+
                 return index;
             }
 
@@ -136,13 +173,11 @@
                     top += elem.offsetTop;
                     elem = elem.offsetParent;
                 }
+
                 return top;
             }
-
         })();
-
     </script>
-
 </body>
 
 </html>
