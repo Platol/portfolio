@@ -1,65 +1,80 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8">
-<title></title>
-<link rel="icon" href="../img/ico.ico">
-<link rel="stylesheet" href="../css/css.css">
-<script src="../js/js.js"></script>
-<style>
-	body {
-		width: 3000px; height: 2000px;
-	}
-	ul {
-		border: 1px solid #666; width: 100px; position: absolute; display: none;
-	}
-	li {
-		line-height: 30px; text-indent: 20px; border-bottom: 1px dashed #ddd;
-	}
-	a {
-		color: #333; display: block;
-	}
-	a:hover {
-		background: #666; color: #fff;
-	}
-	
-</style>
-</head>
-<body>
-<ul>
-	<li><a href="javascript:;">剪切</a></li>
-	<li><a href="javascript:;">粘贴</a></li>
-	<li><a href="javascript:;">添加</a></li>
-	<li><a href="javascript:;">删除</a></li>
-	<li><a href="javascript:;">后退</a></li>
-</ul>
 
-<script>
-(function(){
-	var oMenu=document.getElementsByTagName('ul')[0];
-	
-	document.oncontextmenu=function(ev){
-		var ev=ev || event;
-		
-		var scrollLeft=document.documentElement.scrollLeft || document.body.scrollLeft;
-		var scrollTop=document.documentElement.scrollTop || document.body.scrollTop;
-		
-		oMenu.style.opacity=0;
-		oMenu.style.display='block';
-		oMenu.style.left=ev.clientX+scrollLeft+'px';
-		oMenu.style.top=ev.clientY+scrollTop+'px';
-		
-		animate( oMenu, {'opacity':100}, 8 );
-		
-		return false;
-	}
-	
-	document.onclick=function(){
-		animate( oMenu, {'opacity':0}, 8, function(){
-			oMenu.style.display='none';
-		} );
-	}
-})();
-</script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="../img/ico.ico">
+    <link rel="stylesheet" href="../css/reset.css">
+    <script src="../js/common.js"></script>
+    <title>模拟右键菜单</title>
+    <style>
+        body {
+            width: 3000px;
+            height: 2000px;
+        }
+
+        ul {
+            border: 1px solid #666;
+            width: 100px;
+            position: absolute;
+            display: none;
+        }
+
+        li {
+            line-height: 30px;
+            text-indent: 20px;
+            border-bottom: 1px dashed #ddd;
+        }
+
+        a {
+            color: #333;
+            display: block;
+        }
+
+        a:hover {
+            background: #666;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li><a href="javascript:;">剪切</a></li>
+        <li><a href="javascript:;">粘贴</a></li>
+        <li><a href="javascript:;">添加</a></li>
+        <li><a href="javascript:;">删除</a></li>
+        <li><a href="javascript:;">后退</a></li>
+    </ul>
+
+    <script>
+        var oMenu = document.getElementsByTagName('ul')[0];
+
+        document.oncontextmenu = function (e) {
+            var e = e || event;
+
+            var scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
+            var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+
+            oMenu.style.opacity = 0;
+            oMenu.style.display = 'block';
+            oMenu.style.left = e.clientX + scrollLeft + 'px';
+            oMenu.style.top = e.clientY + scrollTop + 'px';
+
+            animate(oMenu, { 'opacity': 100 }, 8);
+
+            return false;
+        }
+
+        document.onclick = function () {
+            animate(oMenu, { 'opacity': 0 }, 8, function () {
+                oMenu.style.display = 'none';
+            });
+        }
+
+    </script>
 </body>
+
 </html>

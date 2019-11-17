@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="../img/ico.ico">
+    <link rel="stylesheet" href="../css/reset.css">
+    <script src="../js/common.js"></script>
+    <title>拖拽之磁性吸附</title>
+    <style>
+        #wrap {
+            width: 600px;
+            height: 400px;
+            position: relative;
+            border: 10px solid #eee;
+            margin: 50px auto;
+        }
+
+        #div {
+            width: 100px;
+            height: 100px;
+            background: #faf;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <div id="div"></div>
+    </div>
+
+    <script>
+        var oWrap = document.getElementById('wrap');
+        var oDiv = document.getElementById('div');
+
+        oDiv.onmousedown = function (e) {
+            var e = e || event;
+
+            var disX = e.clientX - this.offsetLeft;
+            var disY = e.clientY - this.offsetTop;
+
+            if (oDiv.setCapture) {
+                oDiv.setCapture();
+            }
+
+            document.onmousemove = function (e) {
+                var e = e || event;
+
+                var L = e.clientX - disX;
+                var T = e.clientY - disY;
+
+                if (L < 50) {
+                    L = 0;
+                } else if (L > oWrap.clientWidth - oDiv.offsetWidth - 50) {
+                    L = oWrap.clientWidth - oDiv.offsetWidth;
+                }
+                if (T < 50) {
+                    T = 0;
+                } else if (T > oWrap.clientHeight - oDiv.offsetHeight - 50) {
+                    T = oWrap.clientHeight - oDiv.offsetHeight;
+                }
+
+                oDiv.style.left = L + 'px';
+                oDiv.style.top = T + 'px';
+            }
+
+            document.onmouseup = function () {
+                document.onmousemove = document.onmouseup = null;
+
+                if (oDiv.releaseCapture) {
+                    oDiv.releaseCapture();
+                }
+            }
+
+            return false;
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="../img/ico.ico">
+    <link rel="stylesheet" href="../css/reset.css">
+    <script src="../js/common.js"></script>
+    <title>星级评论</title>
+    <style>
+        div {
+            width: 200px;
+            margin: 20px auto;
+        }
+
+        ul {
+            width: 95px;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            zoom: 1;
+            background: url(../img/star.png) -95px top no-repeat;
+            float: left;
+        }
+
+        li {
+            list-style: none;
+            width: 19px;
+            height: 18px;
+            float: left;
+            cursor: pointer;
+        }
+
+        span {
+            float: left;
+            padding-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <span></span>
+    </div>
+
+    <script>
+        var oUl = document.getElementsByTagName('ul')[0];
+        var aLi = document.getElementsByTagName('li');
+        var oSpan = document.getElementsByTagName('span')[0];
+
+        var arr = ['极差', '较差', '还行', '推荐', '力荐'];
+
+        var str1 = '';
+        var str2 = '';
+
+        for (var i = 0; i < aLi.length; i++) {
+            aLi[i].index = i;
+
+            aLi[i].onmouseover = function () {
+                fn(this.index);
+            }
+
+            aLi[i].onmouseout = function () {
+                oUl.style.backgroundPositionX = str1;
+                oSpan.innerHTML = str2;
+            }
+
+            aLi[i].onclick = function () {
+                fn(this.index);
+
+                str1 = oUl.style.backgroundPositionX;
+                str2 = oSpan.innerHTML;
+            }
+        }
+
+        function fn(num) {
+            oUl.style.backgroundPositionX = -95 + (num + 1) * 19 + 'px';
+            oSpan.innerHTML = arr[num];
+        }
+
+    </script>
+</body>
+
+</html>

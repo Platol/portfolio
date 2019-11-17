@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="../img/ico.ico">
+    <link rel="stylesheet" href="../css/reset.css">
+    <script src="../js/common.js"></script>
+    <title>查找关键字</title>
+    <style>
+        #wrap {
+            width: 400px;
+            margin: 50px auto;
+        }
+
+        p {
+            padding: 10px;
+            border: 5px solid #bbb;
+            font-size: 14px;
+            line-height: 24px;
+            text-indent: 28px;
+            text-align: justify;
+            /* text-justify: distribute-all-lines; */
+            /*ie6-8*/
+            /* text-align-last: justify; */
+            /* ie9+*/
+        }
+
+        #wrap div {
+            margin-bottom: 20px;
+            text-align: right;
+        }
+
+        span {
+            background: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <div>
+            请输入关键字：
+            <input type="text">
+            <input type="button" value="查找">
+        </div>
+        <p>缤纷的天空里千千忆星宿，就像似宝石镶嵌闪烁得通透，夜幕下多么的诗意，拥抱温馨的你心中感足够，踏着梦让我俩漫游宇宙，穿梭星空里一起作诗句，踏着梦共创作美丽故事，就让浪漫弥漫在心中，Woo......，这一刻...，我的心...，这一刻全忘掉现实似梦，我的心自今天给你操纵，这一刻让星光印证心愿，我俩永远都深深爱恋不断，这心只喜欢一生交给你，愿似烟花璀灿奔放于空气，让梦幻常日夕陪伴我，只想跟你如星光般优美！
+        </p>
+    </div>
+
+    <script>
+        var oTxt = document.getElementsByTagName('input')[0];
+        var oBtn = document.getElementsByTagName('input')[1];
+        var oP = document.getElementsByTagName('p')[0];
+
+        oBtn.onclick = function () {
+            var word = oTxt.value;
+
+            if (word == '') {
+                alert('输入为空，请输入！');
+            } else if (oP.innerHTML.indexOf(word) == -1) {
+                alert('查无此字！')
+            } else {
+                var arr = oP.innerHTML.split(word);
+                oP.innerHTML = arr.join('<span>' + word + '</span>');
+            }
+        }
+
+    </script>
+</body>
+
+</html>

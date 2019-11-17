@@ -1,88 +1,97 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="utf-8">
-<title></title>
-<link rel="icon" href="../img/ico.ico">
-<link rel="stylesheet" href="../css/css.css">
-<script src="../js/js.js"></script>
-<style>
-	div {
-		width: 100px; height: 100px; position: absolute;
-	}
-	#div1 {
-		left: 0; top: 0; background: #faf;
-	}
-	#div2 {
-		left: 400px; top: 400px; background: #afa;
-	}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="../img/ico.ico">
+    <title>碰撞检测</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+        }
+
+        #div1 {
+            left: 0;
+            top: 0;
+            background: #faf;
+        }
+
+        #div2 {
+            left: 400px;
+            top: 400px;
+            background: #afa;
+        }
+    </style>
 </head>
 
 <body>
-<div id="div1"></div>
-<div id="div2"></div>
+    <div id="div1"></div>
+    <div id="div2"></div>
 
-<script>
-(function(){
-	var oDiv1=document.getElementById('div1');
-	var oDiv2=document.getElementById('div2');
-	
-	fn(oDiv1, oDiv2);
-	fn(oDiv2, oDiv1);
-	
-	
-	//碰撞检测函数：
-	function fn( obj1, obj2 ){
-		obj1.onmousedown=function( ev ){
-			var ev = ev || event;
+    <script>
+        var oDiv1 = document.getElementById('div1');
+        var oDiv2 = document.getElementById('div2');
 
-			var disX = ev.clientX - this.offsetLeft;
-			var disY = ev.clientY - this.offsetTop;
+        fn(oDiv1, oDiv2);
+        fn(oDiv2, oDiv1);
 
-			if( obj1.setCapture ){
-				obj1.setCapture();
-			}
 
-			document.onmousemove=function( ev ){
-				var ev = ev || event;
+        //碰撞检测函数：
+        function fn(elem1, elem2) {
+            elem1.onmousedown = function (ev) {
+                var ev = ev || event;
 
-				var L = ev.clientX - disX;
-				var T = ev.clientY - disY;
+                var disX = ev.clientX - this.offsetLeft;
+                var disY = ev.clientY - this.offsetTop;
 
-				var L1=L;
-				var R1=L1+obj1.offsetWidth;
-				var T1=T;
-				var B1=T1+obj1.offsetHeight;
+                if (elem1.setCapture) {
+                    elem1.setCapture();
+                }
 
-				var L2=obj2.offsetLeft;
-				var R2=L2+obj2.offsetWidth;
-				var T2=obj2.offsetTop;
-				var B2=T2+obj2.offsetHeight;
-				
-				if( R1 < L2 || L1 > R2 || B1 < T2 || T1 > B2 ){
-					obj2.style.background = '';
-				} else {
-					obj2.style.background = 'red';
-				}
+                document.onmousemove = function (ev) {
+                    var ev = ev || event;
 
-				obj1.style.left = L + 'px';
-				obj1.style.top = T + 'px';
-			}
+                    var L = ev.clientX - disX;
+                    var T = ev.clientY - disY;
 
-			document.onmouseup=function(){
+                    var L1 = L;
+                    var R1 = L1 + elem1.offsetWidth;
+                    var T1 = T;
+                    var B1 = T1 + elem1.offsetHeight;
 
-				document.onmousemove = document.onmouseup = null;
+                    var L2 = elem2.offsetLeft;
+                    var R2 = L2 + elem2.offsetWidth;
+                    var T2 = elem2.offsetTop;
+                    var B2 = T2 + elem2.offsetHeight;
 
-				if( obj1.releaseCapture ){
-					obj1.releaseCapture();
-				}
-			}
+                    if (R1 < L2 || L1 > R2 || B1 < T2 || T1 > B2) {
+                        elem2.style.background = '';
+                    } else {
+                        elem2.style.background = 'red';
+                    }
 
-			return false;
-		}
-	}
-})();
-</script>
+                    elem1.style.left = L + 'px';
+                    elem1.style.top = T + 'px';
+                }
+
+                document.onmouseup = function () {
+
+                    document.onmousemove = document.onmouseup = null;
+
+                    if (elem1.releaseCapture) {
+                        elem1.releaseCapture();
+                    }
+                }
+
+                return false;
+            }
+        }
+
+    </script>
 </body>
+
 </html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="../img/ico.ico">
+    <link rel="stylesheet" href="../css/reset.css">
+    <script src="../js/common.js"></script>
+    <title>V字仇杀</title>
+    <style>
+        #box {
+            width: 550px;
+            margin: 50px auto;
+            position: relative;
+        }
+
+        #box div {
+            width: 50px;
+            height: 50px;
+            background: red;
+            position: absolute;
+            line-height: 50px;
+            text-align: center;
+            color: #fff;
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+
+    <script>
+        var oDiv = document.getElementById('box');
+
+        for (var i = 0; i < 11; i++) {
+            oDiv.innerHTML += '<div>' + i + '</div>';
+        }
+
+        var aDiv = oDiv.getElementsByTagName('div');
+
+        for (var i = 0; i < 11; i++) {
+            aDiv[i].style.left = i * 50 + 'px';
+            if (i > 5) {
+                aDiv[i].style.top = (10 - i) * 50 + 'px';
+            } else {
+                aDiv[i].style.top = i * 50 + 'px';
+            }
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,200 +1,176 @@
-﻿<!doctype html>
+<!DOCTYPE html>
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="img/ico.ico">
-    <link rel="stylesheet" href="css/css.css">
-    <script src="js/js.js"></script>
+    <link rel="stylesheet" href="css/reset.css">
+    <script src="js/common.js"></script>
+    <title>Portfolio</title>
     <style>
-        body {
-            background: #fff;
-            font-family: 苹方;
+        body:after {
+            content: "";
+            display: block;
+            clear: both;
         }
-        #wrap {
-            width: 508px;
-            padding: 40px;
-            border: 6px solid #fbfbfb;
-            border-radius: 10px;
-            margin: 0 auto;
+
+        div {
             background: #f8f5e6;
+            border-top: 4px solid #e9e0b2;
+            float: left;
+            margin: 10px;
+            padding: 10px;
         }
-        #wrap>li {
-            padding: 5px 0;
-            border-bottom: 1px solid #e9e0b2;
-        }
-        #wrap>li ul {
-            display: none;
-        }
-        h2 {
+
+        h3 {
+            line-height: 36px;
+            padding: 0 10px;
             cursor: pointer;
-            padding: 15px 0 15px 20px;
-            color: #1466B9;
-            border-radius: 6px;
+            margin-bottom: 10px;
         }
-        h2:hover {
-            background: #d64a28;
+
+        h3:hover {
+            background: orangered;
             color: #fff;
         }
-        #wrap>li li {
-            margin-top: 1px;
-        }
+
         a {
             display: block;
-            width: 440px;
-            padding: 10px 0 10px 30px;
-            margin-left: 20px;
-            color: #1466B9;
-            border-radius: 4px;
-            font-size: 20px;
-            background: #f8f5e6;
+            padding: 6px 10px;
+            color: blue;
         }
+
         a:hover {
-            background: #e66a18;
+            background: crimson;
             color: #fff;
         }
     </style>
 </head>
 
 <body>
-    <ul id="wrap">
-        <li>
-            <h2>CH01：图片及展示</h2>
-            <ul>
-                <li><a href="pages/banner-fade.html">电商banner-淡入淡出切换</a></li>
-                <li><a href="pages/banner-slide.html">电商banner-滑动切换</a></li>
-                <li><a href="pages/img-scroll-free.html">图片随机滚动</a></li>
-                <li><a href="pages/ad-auto-cycle.html">电商广告循环展示</a></li>
-                <li><a href="pages/accordion.html">手风琴</a></li>
-            </ul>
-        </li>
-        <li>
-            <h2>CH02：内容与功能</h2>
-            <ul>
-                <li><a href="pages/comment.html">星级评论</a></li>
-                <li><a href="pages/right-sides-toolbar.html">电商右侧工具条</a></li>
-                <li><a href="pages/tab-list.html">选项卡及列表切换</a></li>
-                <li><a href="pages/nav-timer.html">定时器导航</a></li>
-                <li><a href="pages/button-effect.html">按钮小效果</a></li>
-                <li><a href="pages/date.html">日期 & 时间</a></li>
-                <li><a href="pages/countdown.html">倒计时</a></li>
-                <li><a href="pages/keyword-search.html">查找关键字</a></li>
-                <li><a href="pages/keyword-replace.html">替换关键字</a></li>
-                <li><a href="pages/carry-words.html">文字搬运</a></li>
-                <li><a href="pages/list-tip.html">列表弹出提示</a></li>
-                <li><a href="pages/popup.html">页面居中弹窗（不用scrollTop）</a></li>
-            </ul>
-        </li>
-        <li>
-            <h2>CH03：表格和表单</h2>
-            <ul>
-                <li><a href="pages/get-checked.html">获取表单控件radio、checkbox的选中值</a></li>
-                <li><a href="pages/table-and-form.html">表格表单综合：增、删、隔行变色……</a></li>
-                <li><a href="pages/select-imitate.html">模拟select单选</a></li>
-                <li><a href="pages/select-imitate-multiple.html">模拟select多选（Ctrl键+鼠标左键）</a></li>
-            </ul>
-        </li>
-        <li>
-            <h2>CH04：页面布局</h2>
-            <ul>
-                <li><a href="layout/ms/index.html">微软Bootstrap响应式布局</a></li>
-                <li><a href="layout/gh/index.html">GitHub[原生]响应式布局</a></li>
-                <li><a href="layout/jd/index.html">京东布局（未完，待续……）</a></li>
-            </ul>
-        </li>
-        <li>
-            <h2>CH05：JS深入应用</h2>
-            <ul>
-                <li><a href="pages/drag-basic.html">固定区域内进行拖拽</a></li>
-                <li><a href="pages/drag-adsorbent.html">拖拽之磁性吸附</a></li>
-                <li><a href="pages/apple-mac-menu-imitate.html">模拟苹果Mac菜单</a></li>
-                <li><a href="pages/photo-wall.html">照片墙-图片换位</a></li>
-                <li><a href="pages/onkeydown-move.html">解决按键移动时的停顿问题</a></li>
-                <li><a href="pages/draw-div.html">鼠标绘制正方形</a></li>
-                <li><a href="pages/drag-playback.html">拖拽过程回放</a></li>
-            </ul>
-        </li>
-        <li>
-            <h2>CH06：Ajax技术</h2>
-            <ul>
-                <li><a href="ajax/001/index.html">ajax实现级联菜单</a></li>
-                <li><a href="ajax/002-waterfall/index.html">ajax实现瀑布流</a></li>
-            </ul>
-        </li>
-        <li>
-            <h2>CH07：CSS3动效</h2>
-            <ul>
-                <li><a href="pages/clock.html">表盘</a></li>
-                <li><a href="pages/fan-menu.html">扇形菜单</a></li>
-            </ul>
-        </li>
-        <li>
-            <h2>CH08：小游戏</h2>
-            <ul>
-                <li><a href="pages/remove-emoji-game.html">消除QQ表情小游戏</a></li>
-            </ul>
-        </li>
-        <li>
-            <h2>CH09：其他实例</h2>
-            <ul>
-                <li><a href="pages/vvv.html">V</a></li>
-                <li><a href="pages/create-lis.html">自动生成100个li</a></li>
-                <li><a href="pages/img-brush.html">擦出图片</a></li>
-                <li><a href="pages/table-imitate.html">模拟表格</a></li>
-                <li><a href="pages/shake.html">抖一抖</a></li>
-                <li><a href="pages/random-integer.html">100个1000以内的随机整数</a></li>
-            </ul>
-        </li>
-    </ul>
+    <div>
+        <h3>图片及展示</h3>
+        <ul>
+            <li><a href="pages/banner 切换-淡入淡出.html">banner 切换-淡入淡出</a></li>
+            <li><a href="pages/banner 切换-左右滑动.html">banner 切换-左右滑动</a></li>
+            <li><a href="pages/图片随机滚动.html">图片随机滚动</a></li>
+            <li><a href="pages/电商广告循环展示.html">电商广告循环展示</a></li>
+            <li><a href="pages/手风琴.html">手风琴</a></li>
+        </ul>
+    </div>
+    <div>
+        <h3>内容与功能</h3>
+        <ul>
+            <li><a href="pages/星级评论.html">星级评论</a></li>
+            <li><a href="pages/电商右侧工具条.html">电商右侧工具条</a></li>
+            <li><a href="pages/选项卡及列表切换.html">选项卡及列表切换</a></li>
+            <li><a href="pages/定时器导航.html">定时器导航</a></li>
+            <li><a href="pages/按钮小效果.html">按钮小效果</a></li>
+            <li><a href="pages/日期 & 时间.html">日期 & 时间</a></li>
+            <li><a href="pages/倒计时.html">倒计时</a></li>
+            <li><a href="pages/查找关键字.html">查找关键字</a></li>
+            <li><a href="pages/替换关键字.html">替换关键字</a></li>
+            <li><a href="pages/文字搬运.html">文字搬运</a></li>
+            <li><a href="pages/列表弹出提示.html">列表弹出提示</a></li>
+            <li><a href="pages/页面居中弹窗（不用scrollTop）.html">页面居中弹窗（不用scrollTop）</a></li>
+        </ul>
+    </div>
+    <div>
+        <h3>表格和表单</h3>
+        <ul>
+            <li><a href="pages/获取radio、checkbox的选中值.html">获取radio、checkbox的选中值</a></li>
+            <li><a href="pages/增、删、隔行变色…….html">增、删、隔行变色……</a></li>
+            <li><a href="pages/模拟select单选.html">模拟select单选</a></li>
+            <li><a href="pages/模拟select多选（Ctrl键+鼠标左键）.html">模拟select多选（Ctrl键+鼠标左键）</a></li>
+        </ul>
+    </div>
+    <div>
+        <h3>页面布局</h3>
+        <ul>
+            <li><a href="layout/ms">微软[Bootstrap]响应式布局</a></li>
+            <li><a href="layout/gh">GitHub[原生]响应式布局</a></li>
+            <li><a href="layout/jd">京东布局（未完，待续……）</a></li>
+        </ul>
+    </div>
+    <div>
+        <h3>JS深入应用</h3>
+        <ul>
+            <li><a href="pages/模拟苹果Mac菜单.html">模拟苹果Mac菜单</a></li>
+            <li><a href="pages/解决按键移动时的停顿问题.html">解决按键移动时的停顿问题</a></li>
+            <li><a href="pages/模拟滚动条-控制高度.html">模拟滚动条-控制高度</a></li>
+            <li><a href="pages/模拟滚动条及滚轮事件.html">模拟滚动条及滚轮事件</a></li>
+            <li><a href="pages/模拟右键菜单.html">模拟右键菜单</a></li>
+            <li><a href="pages/布局转换.html">布局转换</a></li>
+        </ul>
+    </div>
+    <div>
+        <h3>JS运动</h3>
+        <ul>
+            <li><a href="pages/弹性运动.html">弹性运动</a></li>
+            <li><a href="pages/刚性运动.html">刚性运动</a></li>
+            <li><a href="pages/抖一抖.html">抖一抖</a></li>
+        </ul>
+    </div>
+    <div>
+        <h3>JS拖拽</h3>
+        <ul>
+            <li><a href="pages/固定区域内拖拽.html">固定区域内拖拽</a></li>
+            <li><a href="pages/拖拽之磁性吸附.html">拖拽之磁性吸附</a></li>
+            <li><a href="pages/照片墙-图片换位.html">照片墙-图片换位</a></li>
+            <li><a href="pages/鼠标绘制正方形.html">鼠标绘制正方形</a></li>
+            <li><a href="pages/拖拽过程回放.html">拖拽过程回放</a></li>
+            <li><a href="pages/碰撞检测.html">碰撞检测</a></li>
+            <li><a href="pages/拖拽改变大小.html">拖拽改变大小</a></li>
+        </ul>
+    </div>
+    <div>
+        <h3>ajax</h3>
+        <ul>
+            <li><a href="ajax/级联菜单">级联菜单</a></li>
+            <li><a href="ajax/瀑布流">瀑布流</a></li>
+        </ul>
+    </div>
+    <div>
+        <h3>CSS3动效</h3>
+        <ul>
+            <li><a href="pages/表盘.html">表盘</a></li>
+            <li><a href="pages/扇形菜单.html">扇形菜单</a></li>
+        </ul>
+    </div>
+    <div>
+        <h3>小游戏</h3>
+        <ul>
+            <li><a href="pages/消除QQ表情小游戏.html">消除QQ表情小游戏</a></li>
+        </ul>
+    </div>
+    <div>
+        <h3>其他示例</h3>
+        <ul>
+            <li><a href="pages/纯CSS绘制三角形.html">纯CSS绘制三角形</a></li>
+            <li><a href="pages/图片img的onload.html">图片img的onload</a></li>
+            <li><a href="pages/V字仇杀.html">V字仇杀</a></li>
+            <li><a href="pages/自动生成100个li.html">自动生成100个li</a></li>
+            <li><a href="pages/擦出图片.html">擦出图片</a></li>
+            <li><a href="pages/模拟表格.html">模拟表格</a></li>
+            <li><a href="pages/100个1000以内的随机整数.html">100个1000以内的随机整数</a></li>
+        </ul>
+    </div>
+
+
 
     <script>
-        (function () {
-            var wrap = document.getElementById('wrap');
-            var titles = wrap.getElementsByTagName('h2');
-            var subTitles = wrap.getElementsByTagName('a');
+        var titles = document.getElementsByTagName('h3');
+        var subTitles = document.getElementsByTagName('a');
 
-            for (var i = 0; i < subTitles.length; i++) {
-                subTitles[i].target = '_blank';
-                subTitles[i].onmouseover = function () {
-                    animate(this, { 'paddingLeft': 40, 'width': 430 }, 8);
-                }
-                subTitles[i].onmouseout = function () {
-                    animate(this, { 'paddingLeft': 30, 'width': 440 }, 8);
-                }
-            }
+        for (var i = 0; i < subTitles.length; i++) {
+            subTitles[i].target = '_blank';
+        }
 
-            var lastLi = wrap.lastElementChild || wrap.lastChild;
-
-            lastLi.style.borderBottom = 'none';
-
-            for (var i = 0; i < titles.length; i++) {
-                titles[i].onclick = function () {
-                    if (this.clicked) {
-                        getNext(this).style.display = 'none';
-                        this.clicked = false;
-                    } else {
-                        for (var j = 0; j < titles.length; j++) {
-                            getNext(titles[j]).style.display = 'none';
-                            titles[j].clicked = false;
-                        }
-
-                        getNext(this).style.display = 'block';
-                        this.clicked = true;
-                    }
-                }
-                titles[i].onmouseover = function () {
-                    linearMove(this, 'paddingLeft', 2, 40);
-                }
-                titles[i].onmouseout = function () {
-                    linearMove(this, 'paddingLeft', 2, 20);
-                }
-            }
-
-            document.onselectstart = function () {
-                return false;
-            }
-        })();
+        document.onselectstart = function () {
+            return false;
+        }
 
     </script>
 </body>

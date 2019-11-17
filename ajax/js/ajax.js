@@ -1,4 +1,4 @@
-function ajax(method, url, data, success) {
+function ajax(type, url, data, success) {
 	var xhr = null;
 
 	try {
@@ -7,7 +7,7 @@ function ajax(method, url, data, success) {
 		xhr = new ActiveXObject('Microsoft.XMLHTTP');
 	}
 
-	var method = method.toUpperCase();
+	var type = type.toUpperCase();
 
 	// 用于清除缓存
 	var random = Math.random();
@@ -21,18 +21,17 @@ function ajax(method, url, data, success) {
 		data = str.slice(0, -1);
 	}
 
-	if (method === 'GET') {
+	if (type === 'GET') {
 		if (data) {
 			url += '?' + data;
 		} else {
 			url += '?t=' + random;
 		}
-
 	}
 
-	xhr.open(method, url, true);
+	xhr.open(type, url, true);
 
-	if (method === 'GET') {
+	if (type === 'GET') {
 		xhr.send();
 	} else {
 		xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");

@@ -1,345 +1,312 @@
 <!doctype html>
 <html>
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-<title></title>
-<link rel="stylesheet" href="css/bootstrap.css">
-<link rel="stylesheet" href="css/self.css">
-<script src="js/jquery-1.12.4.js"></script>
-<script src="js/bootstrap.js"></script>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<title>微软Bootstrap响应式布局</title>
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/main.css">
+	<script src="js/jquery-1.12.4.js"></script>
+	<script src="js/bootstrap.js"></script>
 </head>
 
 <body>
-<nav class="navbar navbar-default navbar-static-top navbar-fixed-top">
-	<div class="container">
-		<div class="navbar-header">
-			<button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-content">
-				<span class="sr-only">导航切换</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<a href="" class="navbar-brand"><img src="img/microsoft.png"></a>
+	<nav class="navbar navbar-default navbar-static-top navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-content">
+					<span class="sr-only">导航切换</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a href="" class="navbar-brand"><img src="img/microsoft.png"></a>
+			</div>
+			<div id="nav-content" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li class="dropdown" data-toggle="tab">
+						<a href="" class="dropdown-toggle" data-toggle="dropdown">商店 <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="">微软官方商城</a></li>
+							<li class="divider"></li>
+							<li><a href="">寻找店铺</a></li>
+							<li class="divider"></li>
+							<li><a href="">应用程序</a></li>
+						</ul>
+					</li>
+					<li class="dropdown" data-toggle="tab">
+						<a href="" class="dropdown-toggle" data-toggle="dropdown">产品 <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="">软件和服务</a></li>
+							<li class="divider"></li>
+							<li><a href="">设备和Xbox</a></li>
+							<li class="divider"></li>
+							<li><a href="">适用于商业领域</a></li>
+						</ul>
+					</li>
+					<li data-toggle="tab"><a href="">支持</a></li>
+				</ul>
+				<p class="navbar-text navbar-right"><a href="" class="navbar-link">登录</a></p>
+				<p class="navbar-text navbar-right"><a href="" class="navbar-link"><span
+							class="glyphicon glyphicon-shopping-cart"></span>&nbsp;<span class="badge">0</span></a></p>
+				<form class="navbar-form navbar-right">
+					<div class="form-group">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="在 Microsoft.com 中搜索">
+							<span class="input-group-addon">
+								<span class="glyphicon glyphicon-search"></span>
+							</span>
+						</div>
+					</div>
+				</form>
+			</div>
 		</div>
-		<div id="nav-content" class="collapse navbar-collapse">
-			<ul class="nav navbar-nav">
-				<li class="dropdown" data-toggle="tab">
-					<a href="" class="dropdown-toggle" data-toggle="dropdown">商店 <span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="">微软官方商城</a></li>
-						<li class="divider"></li>
-						<li><a href="">寻找店铺</a></li>
-						<li class="divider"></li>
-						<li><a href="">应用程序</a></li>
-					</ul>
-				</li>
-				<li class="dropdown" data-toggle="tab">
-					<a href="" class="dropdown-toggle" data-toggle="dropdown">产品 <span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="">软件和服务</a></li>
-						<li class="divider"></li>
-						<li><a href="">设备和Xbox</a></li>
-						<li class="divider"></li>
-						<li><a href="">适用于商业领域</a></li>
-					</ul>
-				</li>
-				<li data-toggle="tab"><a href="">支持</a></li>
-			</ul>
-			<p class="navbar-text navbar-right"><a href="" class="navbar-link">登录</a></p>
-			<p class="navbar-text navbar-right"><a href="" class="navbar-link"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;<span class="badge">0</span></a></p>
-			<form class="navbar-form navbar-right">
-				<div class="form-group">
-					<div class="input-group">
-						<input type="text" class="form-control" placeholder="在 Microsoft.com 中搜索">
-						<span class="input-group-addon">
-							<span class="glyphicon glyphicon-search"></span>
-						</span>
+	</nav>
+
+	<div class="container banner-1">
+		<div id="banner-1" class="carousel slide" data-ride="carousel" data-interval=5000>
+			<!-- Indicators -->
+			<ol class="carousel-indicators">
+				<li data-target="#banner-1" data-slide-to="0" class="active"></li>
+				<li data-target="#banner-1" data-slide-to="1"></li>
+			</ol>
+			<div class="carousel-inner">
+				<div class="item active">
+					<a href=""><img src="img/banner1.jpg"></a>
+					<div class="carousel-caption">
+						<!--
+					<h1>了解全新的Surface Laptop</h1>
+					<p>随心所欲，百变菁英</p>
+					<a href="" class="btn btn-info">立即购买</a>
+-->
 					</div>
 				</div>
-			</form>
+				<div class="item">
+					<a href=""><img src="img/banner2.jpg"></a>
+					<div class="carousel-caption">
+
+					</div>
+				</div>
+			</div>
+			<a class="left carousel-control" href="#banner-1" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+			<a class="right carousel-control" href="#banner-1" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right"></span>
+				<span class="sr-only">Next</span>
+			</a>
 		</div>
 	</div>
-</nav>
 
-<div class="container banner-1">
-	<div id="banner-1" class="carousel slide" data-ride="carousel" data-interval=5000>
-		<!-- Indicators -->
-		<ol class="carousel-indicators">
-			<li data-target="#banner-1" data-slide-to="0" class="active"></li>
-			<li data-target="#banner-1" data-slide-to="1"></li>
-		</ol>
-		<div class="carousel-inner">
-			<div class="item active">
-				<a href=""><img src="img/banner1.jpg"></a>
-				<div class="carousel-caption">
-<!--
-					<h1>了解全新的Surface Laptop</h1>
-					<p>随心所欲，百变菁英</p>
-					<a href="" class="btn btn-info">立即购买</a>
--->
-				</div>
-			</div>
-			<div class="item">
-				<a href=""><img src="img/banner2.jpg"></a>
-				<div class="carousel-caption">
-
-				</div>
-			</div>
-		</div>
-		<a class="left carousel-control" href="#banner-1" data-slide="prev">
-			<span class="glyphicon glyphicon-chevron-left"></span>
-			<span class="sr-only">Previous</span>
-		</a>
-		<a class="right carousel-control" href="#banner-1" data-slide="next">
-			<span class="glyphicon glyphicon-chevron-right"></span>
-			<span class="sr-only">Next</span>
-		</a>
-	</div>
-</div>
-
-<div class="container">
-	<div class="row">
-		<div class="col-sm-6 col-md-3">
-			<div class="thumbnail">
-				<a href=""><img src="img/01.jpg"></a>
-				<div class="caption">
-					<h3>面向企业的 Office 365</h3>
-					<p>无论联机或脱机，均可随时随地访问您的文件。</p>
-					<i><a href="#" class="btn btn-primary">了解更多</a></i>
-				</div>
-			</div>
-		</div>
-		<div class="col-sm-6 col-md-3">
-			<div class="thumbnail">
-				<a href=""><img src="img/02.jpg"></a>
-				<div class="caption">
-					<h3>Windows 10 企业版</h3>
-					<p>下载适用于 IT 专业人士的 90 天免费评估版。</p>
-					<i><a href="#" class="btn btn-primary">立即下载</a></i>
-				</div>
-			</div>
-		</div>
-		<div class="col-sm-6 col-md-3">
-			<div class="thumbnail">
-				<a href=""><img src="img/03.jpg"></a>
-				<div class="caption">
-					<h3>Microsoft HoloLens</h3>
-					<p>预定开发版。改变你的世界。</p>
-					<i><a href="#" class="btn btn-primary">立即订购</a></i>
-				</div>
-			</div>
-		</div>
-		<div class="col-sm-6 col-md-3">
-			<div class="thumbnail">
-				<a href=""><img src="img/04.jpg"></a>
-				<div class="caption">
-					<h3>Microsoft Azure</h3>
-					<p>立即开始构建 Web 应用。</p>
-					<i><a href="#" class="btn btn-primary">开设免费 AZURE 帐户</a></i>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-<div class="container">
-	<div class="jumbotron">
-		<h1>微软官方商城</h1>
-		<p>寻找适合的技术，满足生活、学习、工作和娱乐之所需。</p>
-		<p><a class="btn btn-default" href="#">立即购买 <span class="glyphicon glyphicon-chevron-right"></span></a></p>
-	</div>
-</div>
-
-<div class="container">
-	<h1>适用于工作地点</h1>
-</div>
-
-<div class="container">
-	<div class="row">
-		<div class="col-sm-6 col-md-3">
-			<div class="thumbnail">
-				<a href=""><img src="img/05.jpg"></a>
-				<div class="caption">
-					<h3>面向企业的 Office 365</h3>
-					<p>无论联机或脱机，均可随时随地访问您的文件。</p>
-					<i><a href="#" class="btn btn-primary">了解更多</a></i>
-				</div>
-			</div>
-		</div>
-		<div class="col-sm-6 col-md-3">
-			<div class="thumbnail">
-				<a href=""><img src="img/06.jpg"></a>
-				<div class="caption">
-					<h3>Windows 10 企业版</h3>
-					<p>下载适用于 IT 专业人士的 90 天免费评估版。</p>
-					<i><a href="#" class="btn btn-primary">立即下载</a></i>
-				</div>
-			</div>
-		</div>
-		<div class="col-sm-6 col-md-3">
-			<div class="thumbnail">
-				<a href=""><img src="img/07.jpg"></a>
-				<div class="caption">
-					<h3>Microsoft HoloLens</h3>
-					<p>预定开发版。改变你的世界。</p>
-					<i><a href="#" class="btn btn-primary">立即订购</a></i>
-				</div>
-			</div>
-		</div>
-		<div class="col-sm-6 col-md-3">
-			<div class="thumbnail">
-				<a href=""><img src="img/08.png"></a>
-				<div class="caption">
-					<h3>Microsoft Azure</h3>
-					<p>立即开始构建 Web 应用。</p>
-					<i><a href="#" class="btn btn-primary">开设免费 AZURE 帐户</a></i>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-<div class="container banner-2">
-	<div id="banner-2" class="carousel slide" data-ride="carousel" data-interval=5000>
-		<!-- Indicators -->
-		<ol class="carousel-indicators">
-			<li data-target="#banner-2" data-slide-to="0" class="active"></li>
-			<li data-target="#banner-2" data-slide-to="1"></li>
-		</ol>
-		<div class="carousel-inner">
-			<div class="item active">
-				<a href=""><img src="img/banner3.jpg"></a>
-				<div class="carousel-caption">
-<!--
-					<h1>了解全新的Surface Laptop</h1>
-					<p>随心所欲，百变菁英</p>
-					<a href="" class="btn btn-info">立即购买</a>
--->
-				</div>
-			</div>
-			<div class="item">
-				<a href=""><img src="img/banner4.jpg"></a>
-				<div class="carousel-caption">
-
-				</div>
-			</div>
-		</div>
-		<a class="left carousel-control" href="#banner-2" data-slide="prev">
-			<span class="glyphicon glyphicon-chevron-left"></span>
-			<span class="sr-only">Previous</span>
-		</a>
-		<a class="right carousel-control" href="#banner-2" data-slide="next">
-			<span class="glyphicon glyphicon-chevron-right"></span>
-			<span class="sr-only">Next</span>
-		</a>
-	</div>
-</div>
-
-<div class="footer">
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-4 col-md-2">
-				<dl>
-					<dt>新增功能</dt>
-					<dd>新 Surface Pro</dd>
-					<dd>Xbox One S</dd>
-					<dd>Surface Laptop</dd>
-					<dd>Windows 10 应用程序</dd>
-					<dd>Office 应用程序</dd>
-				</dl>
+			<div class="col-sm-6 col-md-3">
+				<div class="thumbnail">
+					<a href=""><img src="img/01.jpg"></a>
+					<div class="caption">
+						<h3>面向企业的 Office 365</h3>
+						<p>无论联机或脱机，均可随时随地访问您的文件。</p>
+						<i><a href="#" class="btn btn-primary">了解更多</a></i>
+					</div>
+				</div>
 			</div>
-			<div class="col-sm-4 col-md-2">
-				<dl>
-					<dt>应用商店和支持</dt>
-					<dd>帐户个人资料</dd>
-					<dd>下载中心</dd>
-					<dd>订单跟踪</dd>
-					<dd>商店位置</dd>
-					<dd>支持</dd>
-				</dl>
+			<div class="col-sm-6 col-md-3">
+				<div class="thumbnail">
+					<a href=""><img src="img/02.jpg"></a>
+					<div class="caption">
+						<h3>Windows 10 企业版</h3>
+						<p>下载适用于 IT 专业人士的 90 天免费评估版。</p>
+						<i><a href="#" class="btn btn-primary">立即下载</a></i>
+					</div>
+				</div>
 			</div>
-			<div class="col-sm-4 col-md-2">
-				<dl>
-					<dt>教育</dt>
-					<dd>Microsoft 教育领域</dd>
-					<dd>适合学生的 Office</dd>
-					<dd>适用于学校的 Office 365</dd>
-					<dd>面向学生和教育工作者的优惠</dd>
-					<dd>Microsoft Azure 教育领域</dd>
-				</dl>
+			<div class="col-sm-6 col-md-3">
+				<div class="thumbnail">
+					<a href=""><img src="img/03.jpg"></a>
+					<div class="caption">
+						<h3>Microsoft HoloLens</h3>
+						<p>预定开发版。改变你的世界。</p>
+						<i><a href="#" class="btn btn-primary">立即订购</a></i>
+					</div>
+				</div>
 			</div>
-			<div class="col-sm-4 col-md-2">
-				<dl>
-					<dt>企业</dt>
-					<dd>Microsoft Azure</dd>
-					<dd>企业</dd>
-					<dd>数据平台</dd>
-					<dd>Microsoft 合作伙伴资源</dd>
-				</dl>
-			</div>
-			<div class="col-sm-4 col-md-2">
-				<dl>
-					<dt>开发人员</dt>
-					<dd>Microsoft Visual Studio</dd>
-					<dd>Windows 开发人员中心</dd>
-					<dd>Microsoft 开发人员网络</dd>
-					<dd>TechNet</dd>
-					<dd>Microsoft Virtual Academy</dd>
-					<dd>Microsoft 开发人员计划</dd>
-					<dd>渠道 9</dd>
-					<dd>Office 开发人员中心</dd>
-				</dl>
-			</div>
-			<div class="col-sm-4 col-md-2">
-				<dl>
-					<dt>公司</dt>
-					<dd>招贤纳士</dd>
-					<dd>关于 Microsoft</dd>
-					<dd>公司新闻</dd>
-					<dd>Microsoft 隐私</dd>
-					<dd>投资人</dd>
-					<dd>安全性</dd>
-				</dl>
+			<div class="col-sm-6 col-md-3">
+				<div class="thumbnail">
+					<a href=""><img src="img/04.jpg"></a>
+					<div class="caption">
+						<h3>Microsoft Azure</h3>
+						<p>立即开始构建 Web 应用。</p>
+						<i><a href="#" class="btn btn-primary">开设免费 AZURE 帐户</a></i>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
+
+	<div class="container">
+		<div class="jumbotron">
+			<h1>微软官方商城</h1>
+			<p>寻找适合的技术，满足生活、学习、工作和娱乐之所需。</p>
+			<p><a class="btn btn-default" href="#">立即购买 <span class="glyphicon glyphicon-chevron-right"></span></a></p>
+		</div>
+	</div>
+
+	<div class="container">
+		<h1>适用于工作地点</h1>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6 col-md-3">
+				<div class="thumbnail">
+					<a href=""><img src="img/05.jpg"></a>
+					<div class="caption">
+						<h3>面向企业的 Office 365</h3>
+						<p>无论联机或脱机，均可随时随地访问您的文件。</p>
+						<i><a href="#" class="btn btn-primary">了解更多</a></i>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6 col-md-3">
+				<div class="thumbnail">
+					<a href=""><img src="img/06.jpg"></a>
+					<div class="caption">
+						<h3>Windows 10 企业版</h3>
+						<p>下载适用于 IT 专业人士的 90 天免费评估版。</p>
+						<i><a href="#" class="btn btn-primary">立即下载</a></i>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6 col-md-3">
+				<div class="thumbnail">
+					<a href=""><img src="img/07.jpg"></a>
+					<div class="caption">
+						<h3>Microsoft HoloLens</h3>
+						<p>预定开发版。改变你的世界。</p>
+						<i><a href="#" class="btn btn-primary">立即订购</a></i>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6 col-md-3">
+				<div class="thumbnail">
+					<a href=""><img src="img/08.png"></a>
+					<div class="caption">
+						<h3>Microsoft Azure</h3>
+						<p>立即开始构建 Web 应用。</p>
+						<i><a href="#" class="btn btn-primary">开设免费 AZURE 帐户</a></i>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container banner-2">
+		<div id="banner-2" class="carousel slide" data-ride="carousel" data-interval=5000>
+			<!-- Indicators -->
+			<ol class="carousel-indicators">
+				<li data-target="#banner-2" data-slide-to="0" class="active"></li>
+				<li data-target="#banner-2" data-slide-to="1"></li>
+			</ol>
+			<div class="carousel-inner">
+				<div class="item active">
+					<a href=""><img src="img/banner3.jpg"></a>
+					<div class="carousel-caption">
+						<!--
+					<h1>了解全新的Surface Laptop</h1>
+					<p>随心所欲，百变菁英</p>
+					<a href="" class="btn btn-info">立即购买</a>
+-->
+					</div>
+				</div>
+				<div class="item">
+					<a href=""><img src="img/banner4.jpg"></a>
+					<div class="carousel-caption">
+
+					</div>
+				</div>
+			</div>
+			<a class="left carousel-control" href="#banner-2" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+			<a class="right carousel-control" href="#banner-2" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right"></span>
+				<span class="sr-only">Next</span>
+			</a>
+		</div>
+	</div>
+
+	<div class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-4 col-md-2">
+					<dl>
+						<dt>新增功能</dt>
+						<dd>新 Surface Pro</dd>
+						<dd>Xbox One S</dd>
+						<dd>Surface Laptop</dd>
+						<dd>Windows 10 应用程序</dd>
+						<dd>Office 应用程序</dd>
+					</dl>
+				</div>
+				<div class="col-sm-4 col-md-2">
+					<dl>
+						<dt>应用商店和支持</dt>
+						<dd>帐户个人资料</dd>
+						<dd>下载中心</dd>
+						<dd>订单跟踪</dd>
+						<dd>商店位置</dd>
+						<dd>支持</dd>
+					</dl>
+				</div>
+				<div class="col-sm-4 col-md-2">
+					<dl>
+						<dt>教育</dt>
+						<dd>Microsoft 教育领域</dd>
+						<dd>适合学生的 Office</dd>
+						<dd>适用于学校的 Office 365</dd>
+						<dd>面向学生和教育工作者的优惠</dd>
+						<dd>Microsoft Azure 教育领域</dd>
+					</dl>
+				</div>
+				<div class="col-sm-4 col-md-2">
+					<dl>
+						<dt>企业</dt>
+						<dd>Microsoft Azure</dd>
+						<dd>企业</dd>
+						<dd>数据平台</dd>
+						<dd>Microsoft 合作伙伴资源</dd>
+					</dl>
+				</div>
+				<div class="col-sm-4 col-md-2">
+					<dl>
+						<dt>开发人员</dt>
+						<dd>Microsoft Visual Studio</dd>
+						<dd>Windows 开发人员中心</dd>
+						<dd>Microsoft 开发人员网络</dd>
+						<dd>TechNet</dd>
+						<dd>Microsoft Virtual Academy</dd>
+						<dd>Microsoft 开发人员计划</dd>
+						<dd>渠道 9</dd>
+						<dd>Office 开发人员中心</dd>
+					</dl>
+				</div>
+				<div class="col-sm-4 col-md-2">
+					<dl>
+						<dt>公司</dt>
+						<dd>招贤纳士</dd>
+						<dd>关于 Microsoft</dd>
+						<dd>公司新闻</dd>
+						<dd>Microsoft 隐私</dd>
+						<dd>投资人</dd>
+						<dd>安全性</dd>
+					</dl>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
+
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

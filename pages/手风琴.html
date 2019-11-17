@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="../img/ico.ico">
+    <link rel="stylesheet" href="../css/reset.css">
+    <script src="../js/common.js"></script>
+    <title>手风琴</title>
+    <style>
+        #accordion {
+            width: 640px;
+            margin: 50px auto;
+            font-family: "Arial";
+        }
+
+        .panel {
+            border: 1px solid #195a93;
+            border-radius: 5px;
+            margin-bottom: 5px;
+        }
+
+        .panel h4 {
+            height: 38px;
+            background: #3479b6;
+            color: #fff;
+            line-height: 38px;
+            padding-left: 15px;
+            cursor: pointer;
+        }
+
+        .panel-body {
+            height: 0;
+            overflow: hidden;
+            border-radius: 0 0 5px 5px;
+        }
+
+        .panel p {
+            padding: 20px 15px;
+            font-size: 14px;
+            line-height: 20px;
+            color: #333;
+            background: #F5F5F5;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="accordion">
+        <div class="panel">
+            <h4>Title 1</h4>
+            <div class="panel-body active">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur
+                    adipisicing elit. Ut quidem dicta, dignissimos veniam est, accusantium odio? Ratione enim debitis
+                    magni, odio minus possimus earum sequi laborum voluptatem maiores quisquam deleniti.
+                </p>
+            </div>
+        </div>
+        <div class="panel">
+            <h4>Title 2</h4>
+            <div class="panel-body">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut quidem dicta, dignissimos veniam est,
+                    accusantium odio? Ratione enim debitis magni, odio minus possimus earum sequi laborum voluptatem
+                    maiores quisquam deleniti.
+                </p>
+            </div>
+        </div>
+        <div class="panel">
+            <h4>Title 3</h4>
+            <div class="panel-body">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut quidem dicta, dignissimos veniam est,
+                    accusantium odio? Ratione enim debitis magni, odio minus possimus earum sequi laborum voluptatem
+                    maiores quisquam deleniti. Ratione enim debitis magni, odio minus possimus earum sequi laborum
+                    voluptatem maiores quisquam deleniti.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var aH4 = document.getElementsByTagName('h4');
+        var aPanelBody = document.querySelectorAll('.panel-body');
+
+        for (var i = 0; i < aH4.length; i++) {
+            aH4[i].onclick = function () {
+                for (var i = 0; i < aPanelBody.length; i++) {
+                    doMove(aPanelBody[i], { 'height': 0 }, 5);
+                }
+
+                var panelBody = getNext(this);
+
+                if (panelBody.offsetHeight == 0) {
+                    doMove(panelBody, { 'height': panelBody.children[0].offsetHeight }, 5);
+                } else {
+                    doMove(panelBody, { 'height': 0 }, 5);
+                }
+            }
+        }
+
+        function doMove(elem, obj, n, callback) {
+            clearInterval(elem.timer);
+
+            var iValue = 0;
+            var iSpeed = 0;
+            var iOffset = 0;
+
+            elem.timer = setInterval(function () {
+                var isStop = true;
+
+                for (var attr in obj) {
+                    var iTarget = obj[attr];
+
+                    if (attr == 'opacity') {
+                        iValue = parseInt(parseFloat(getStyle(elem, attr)) * 100);
+                    } else {
+                        iValue = parseInt(getStyle(elem, attr));
+                    }
+
+                    iSpeed = (iTarget - iValue) / n;
+                    iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
+                    iOffset = iValue + iSpeed;
+
+                    if (iValue != iTarget) {
+                        isStop = false;
+
+                        if (attr == 'opacity') {
+                            elem.style.opacity = iOffset / 100;
+                            elem.style.filter = 'alpha(opacity=' + iOffset + ')';
+                        } else {
+                            elem.style[attr] = iOffset + 'px';
+                        }
+                    }
+                }
+
+                if (isStop) {
+                    clearInterval(elem.timer);
+                    callback && callback();
+                }
+            }, 30);
+        }
+
+    </script>
+</body>
+
+</html>

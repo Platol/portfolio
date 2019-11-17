@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="../img/ico.ico">
+    <link rel="stylesheet" href="../css/reset.css">
+    <script src="../js/common.js"></script>
+    <title>自动生成100个li</title>
+    <style>
+        input {
+            display: block;
+            margin: 20px auto;
+        }
+
+        ul {
+            position: relative;
+            width: 590px;
+            height: 590px;
+            background: #eee;
+            margin: 20px auto;
+        }
+
+        li {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: white;
+            font-size: 30px;
+            line-height: 50px;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="button" value="自动生成100个 li">
+    <ul></ul>
+
+    <script>
+        var btn = document.getElementsByTagName('input')[0];
+        var oUl = document.getElementsByTagName('ul')[0];
+        var aColor = ['red', 'green', 'blue', 'orange'];
+        var aLi = null;
+
+        var on = true;
+        btn.onclick = function () {
+            if (on) {
+                for (var i = 0; i < 100; i++) {
+                    oUl.innerHTML += '<li>' + i + '</li>';
+                }
+
+                aLi = oUl.getElementsByTagName('li');
+
+                for (var i = 0; i < aLi.length; i++) {
+                    aLi[i].style.background = aColor[i % 4];
+                    aLi[i].style.left = i % 10 * 60 + 'px';
+                    aLi[i].style.top = (i - (i % 10)) * 6 + 'px';
+                }
+            }
+            on = false;
+        }
+
+    </script>
+</body>
+
+</html>

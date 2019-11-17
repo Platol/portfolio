@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="../img/ico.ico">
+    <link rel="stylesheet" href="../css/reset.css">
+    <script src="../js/common.js"></script>
+    <title>模拟select单选</title>
+    <style>
+        div {
+            width: 244px;
+            height: 24px;
+            padding: 8px;
+            line-height: 24px;
+            border: 2px solid red;
+            margin: 50px auto 0 auto;
+        }
+
+        ul {
+            width: 260px;
+            border: 1px solid red;
+            margin: 0 auto;
+            font-size: 14px;
+            display: none;
+        }
+
+        div,
+        li {
+            cursor: pointer;
+        }
+
+        li {
+            padding: 8px;
+        }
+
+        li:hover {
+            background: #eee;
+        }
+    </style>
+</head>
+
+<body>
+    <div>-请选择-</div>
+    <ul>
+        <li>曼联</li>
+        <li>切尔西</li>
+        <li>巴塞罗那</li>
+        <li>皇家马德里</li>
+        <li>拜仁慕尼黑</li>
+        <li>巴黎圣日耳曼</li>
+    </ul>
+
+    <script>
+        var oDiv = document.getElementsByTagName('div')[0];
+        var oUl = document.getElementsByTagName('ul')[0];
+        var aLi = oUl.getElementsByTagName('li');
+
+        oDiv.onclick = function (e) {
+            var e = e || event;
+
+            try {
+                e.stopPropagation();
+            } catch (err) {
+                e.cancelBubble = true;
+            }
+
+            if (this.clicked) {
+                oUl.style.display = 'none';
+                this.clicked = false;
+            } else {
+                oUl.style.display = 'block';
+                this.clicked = true;
+            }
+        }
+
+        for (var i = 0; i < aLi.length; i++) {
+            aLi[i].onclick = function () {
+                for (var i = 0; i < aLi.length; i++) {
+                    aLi[i].style.backgroundColor = '';
+                    aLi[i].style.color = '';
+                }
+                oDiv.innerHTML = this.innerHTML;
+                this.style.backgroundColor = 'red';
+                this.style.color = '#fff';
+            }
+        }
+
+        document.onclick = function () {
+            oUl.style.display = 'none';
+            oDiv.clicked = false;
+        }
+
+    </script>
+</body>
+
+</html>

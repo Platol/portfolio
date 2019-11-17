@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="../img/ico.ico">
+    <link rel="stylesheet" href="../css/reset.css">
+    <script src="../js/common.js"></script>
+    <title>解决按键移动时的停顿问题</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+
+    <script>
+        var oDiv = document.getElementsByTagName('div')[0];
+
+        var l = t = r = b = false;
+
+        setInterval(function () {
+            if (l) {
+                oDiv.style.left = oDiv.offsetLeft - 10 + 'px';
+            } else if (t) {
+                oDiv.style.top = oDiv.offsetTop - 10 + 'px';
+            } else if (r) {
+                oDiv.style.left = oDiv.offsetLeft + 10 + 'px';
+            } else if (b) {
+                oDiv.style.top = oDiv.offsetTop + 10 + 'px';
+            }
+        }, 20);
+
+        document.onkeydown = function (e) {
+            var e = e || event;
+
+            switch (e.keyCode) {
+                case 37: l = true; break;
+                case 38: t = true; break;
+                case 39: r = true; break;
+                case 40: b = true; break;
+            }
+        }
+
+        document.onkeyup = function (e) {
+            var e = e || event;
+
+            switch (e.keyCode) {
+                case 37: l = false; break;
+                case 38: t = false; break;
+                case 39: r = false; break;
+                case 40: b = false; break;
+            }
+        }
+
+    </script>
+</body>
+
+</html>

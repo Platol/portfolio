@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="../img/ico.ico">
+    <link rel="stylesheet" href="../css/reset.css">
+    <script src="../js/common.js"></script>
+    <title>抖一抖</title>
+    <style>
+        div {
+            position: relative;
+            margin: 50px auto;
+            width: 300px;
+            height: 500px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        img {
+            position: absolute;
+            left: 0;
+            top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h2>点击下图，让它抖一抖</h2>
+        <img src="../img/hismap/2.png">
+    </div>
+
+    <script>
+        var oImg = document.getElementsByTagName('img')[0];
+
+        oImg.onclick = function () {
+            var _this = this;
+
+            shake(this, 'left', function () {
+                shake(_this, 'top');
+            })
+        }
+
+    </script>
+</body>
+
+</html>

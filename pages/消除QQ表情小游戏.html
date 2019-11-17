@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="../img/ico.ico">
+    <link rel="stylesheet" href="../css/reset.css">
+    <script src="../js/common.js"></script>
+    <title>消除QQ表情小游戏</title>
+    <style>
+        #alert {
+            text-align: center;
+        }
+
+        #alert p {
+            line-height: 24px;
+            margin: 10px 0;
+        }
+
+        #box {
+            width: 800px;
+            height: 450px;
+            border: 1px solid #ccc;
+            margin: 20px auto;
+            position: relative;
+            top: 0;
+        }
+
+        #fraction {
+            background: #ffc;
+            width: 130px;
+            border: 1px solid #ccc;
+            position: absolute;
+            padding: 10px;
+            left: -152px;
+            top: -1px;
+        }
+
+        #fraction p {
+            line-height: 30px;
+        }
+
+        #points {
+            color: red;
+        }
+
+        #scores {
+            color: green;
+        }
+
+        img {
+            width: 24px;
+            height: 24px;
+            position: absolute;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="alert">
+        <h2>你的鼠标有多快？</h2>
+        <p>游戏说明：点击“开始游戏”，随机掉下QQ表情，把鼠标移上去，千万别让它掉下去！！<br />划掉25个算你赢；掉下10个算你输 :)</p>
+        <input type="button" value="开始游戏" />
+    </div>
+    <div id="box">
+        <div id="fraction">
+            <p>得分：<strong id="scores">0</strong> 分</p>
+            <p>失分：<strong id="points">0</strong> 分</p>
+        </div>
+    </div>
+
+    <script>
+        var oBox = document.getElementById('box');
+        var oScore = document.getElementById('scores');
+        var oPoint = document.getElementById('points');
+        var oBtn = document.getElementsByTagName('input')[0];
+        var speed = 1, score = 0, point = 0;
+        var W = oBox.clientWidth;
+        var H = oBox.clientHeight;
+        var arr = [
+            '../img/emoji/1.png',
+            '../img/emoji/2.png',
+            '../img/emoji/3.png',
+            '../img/emoji/4.png',
+            '../img/emoji/5.png',
+            '../img/emoji/6.png',
+            '../img/emoji/7.png',
+            '../img/emoji/8.png',
+            '../img/emoji/9.png',
+            '../img/emoji/10.png',
+            '../img/emoji/11.png'
+        ];
+
+        oBtn.onclick = function () {
+            this.disabled = true;
+            this.value = '游戏进行中……';
+
+            once();
+        }
+
+        function once() {
+            var l = Math.floor(Math.random() * (W - 23));
+            var n = Math.floor(Math.random() * arr.length);
+
+            var oImg = document.createElement('img');
+            oImg.src = arr[n];
+            oImg.style.left = l + 'px';
+            oBox.appendChild(oImg);
+
+            linearMove(oImg, 'top', speed, H - 24, function () {
+                oPoint.innerHTML = (++point);
+                shake(oBox, 'top');
+                oBox.removeChild(oImg);
+
+                if (point < 10) {
+                    once();
+                } else {
+                    alert('失败了，重新开始吧！');
+                    speed = 1;
+                    score = 0;
+                    point = 0;
+                    oScore.innerHTML = 0;
+                    oPoint.innerHTML = 0;
+                    oBtn.disabled = false;
+                    oBtn.value = '开始游戏';
+                }
+            });
+
+            oImg.onmouseover = function () {
+                this.src = '../img/emoji/qq.png';
+                shake(this, 'left', function () {
+                    oBox.removeChild(oImg);
+                    once();
+                    oScore.innerHTML = (++score);
+                    speed++;
+                });
+            }
+        }
+
+    </script>
+</body>
+
+</html>

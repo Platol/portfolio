@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="../img/ico.ico">
+    <link rel="stylesheet" href="../css/reset.css">
+    <script src="../js/common.js"></script>
+    <title>增、删、隔行变色……</title>
+    <style>
+        form {
+            width: 478px;
+            padding: 10px;
+            border: 1px solid #666;
+            border-radius: 5px;
+            margin: 30px auto;
+            line-height: 30px;
+            position: relative;
+        }
+
+        table {
+            width: 500px;
+            margin: 30px auto;
+            border-collapse: collapse;
+        }
+
+        tr {
+            cursor: pointer;
+        }
+
+        th,
+        td {
+            border: 1px solid #666;
+            padding: 5px;
+        }
+
+        tr td:first-child {
+            text-align: center;
+        }
+
+        input[type="checkbox"] {
+            -width: 15px;
+            -height: 15px;
+        }
+
+        input[type="button"] {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+        }
+
+        div {
+            width: 478px;
+            padding: 10px;
+            margin: 0 auto;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="">
+        请输入姓名：<input type="text" name="name"><br>
+        请输入性别：<input type="radio" name="sex" value="男">男<input type="radio" name="sex" value="女">女<br>
+        请输入年龄：<input type="text" name="age"><br>
+        <input type="button" name="add" value="添加到表格">
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th width="25%"><input type="checkbox" id="check_all">全选</th>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>年龄</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <div>
+        <input type="button" value="删除所选行" id="delete">
+    </div>
+
+    <script>
+        var data = [
+            { 'name': '赵一', 'sex': '男', 'age': '35' },
+            { 'name': '钱二', 'sex': '女', 'age': '28' },
+            { 'name': '孙三', 'sex': '男', 'age': '15' },
+            { 'name': '李四', 'sex': '男', 'age': '48' },
+            { 'name': '周五', 'sex': '男', 'age': '36' },
+            { 'name': '武六', 'sex': '女', 'age': '49' },
+            { 'name': '郑七', 'sex': '女', 'age': '75' },
+            { 'name': '王八', 'sex': '男', 'age': '17' }
+        ];
+
+        var form = document.forms[0];
+        var table = document.getElementsByTagName('table')[0];
+        var tbody = table.tBodies[0];
+        var thead = table.tHead;
+        var oCheckAll = document.getElementById('check_all');
+        var oDelete = document.getElementById('delete');
+
+        var color = ['#faf', '#ffa'];
+        var str = '';
+
+        for (var i = 0; i < data.length; i++) {
+            str += '<tr><td><input type="checkbox"></td><td>' + data[i].name + '</td><td>' + data[i].sex + '</td><td>' + data[i].age + '</td></tr>';
+        }
+        tbody.innerHTML = str;
+
+        rowColor();
+        checkBox();
+
+
+        form.add.onclick = function () {
+            var arr = [];
+            arr[0] = form.name.value;
+            arr[1] = getChecked(form, 'sex')[0];
+            arr[2] = form.age.value;
+
+            for (var i = 0; i < arr.length; i++) {
+                if (!arr[i]) {
+                    alert('您有项目尚未填写！');
+                    return;
+                }
+            }
+
+            var tr = tbody.insertRow();
+            var tD = tr.insertCell();
+            tD.innerHTML = '<input type="checkbox">';
+            for (var i = 0; i < arr.length; i++) {
+                var td = tr.insertCell();
+                td.innerHTML = arr[i];
+            }
+
+            if (oCheckAll.checked) { oCheckAll.checked = false; }
+            for (var i = 0; i < tbody.rows.length; i++) {
+                if (tbody.rows[i].cells[0].children[0].checked) {
+                    tbody.rows[i].cells[0].children[0].checked = false;
+                }
+            }
+
+            rowColor();
+            checkBox();
+
+            form.reset();
+        }
+
+        oDelete.onclick = function () {
+            var len = tbody.rows.length;
+
+            for (var i = len - 1; i > -1; i--) {
+                if (tbody.rows[i].cells[0].children[0].checked) {
+                    tbody.removeChild(tbody.rows[i]);
+                }
+            }
+            if (oCheckAll.checked) { oCheckAll.checked = false; }
+
+            rowColor();
+            checkBox();
+        }
+
+
+        function rowColor() {
+            for (var i = 0; i < tbody.rows.length; i++) {
+                tbody.rows[i].style.backgroundColor = color[i % 2];
+            }
+        }
+
+        function checkBox() {
+            var len = tbody.rows.length;
+
+            for (var i = 0; i < len; i++) {
+                tbody.rows[i].onclick = function () {
+                    this.cells[0].children[0].checked = this.cells[0].children[0].checked == true ? false : true;
+                    check();
+                }
+                tbody.rows[i].cells[0].children[0].onclick = function () {
+                    this.checked = this.checked == true ? false : true;
+                    check();
+                }
+            }
+
+            thead.onclick = oCheckAll.onclick = function () {
+
+                oCheckAll.checked = oCheckAll.checked == true ? false : true;
+                for (var i = 0; i < len; i++) {
+                    tbody.rows[i].cells[0].children[0].checked = oCheckAll.checked;
+                }
+            }
+
+            function check() {
+                for (var i = 0; i < len; i++) {
+                    if (!tbody.rows[i].cells[0].children[0].checked) {
+                        oCheckAll.checked = false;
+                        return;
+                    } else {
+                        oCheckAll.checked = true;
+                    }
+                }
+            }
+        }
+
+    </script>
+</body>
+
+</html>

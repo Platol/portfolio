@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="../img/ico.ico">
+    <link rel="stylesheet" href="../css/reset.css">
+    <script src="../js/common.js"></script>
+    <title>模拟select多选（Ctrl键+鼠标左键）</title>
+    <style>
+        div {
+            width: 444px;
+            height: 24px;
+            padding: 8px;
+            line-height: 24px;
+            border: 2px solid red;
+            margin: 50px auto 0 auto;
+            font-size: 14px;
+        }
+
+        ul {
+            width: 460px;
+            border: 1px solid red;
+            margin: 0 auto;
+            font-size: 14px;
+            display: none;
+        }
+
+        div,
+        li {
+            cursor: pointer;
+        }
+
+        li {
+            padding: 8px;
+            margin-top: 1px;
+        }
+
+        li:hover {
+            background: #eee;
+        }
+    </style>
+</head>
+
+<body>
+    <div>-请选择-</div>
+    <ul>
+        <li>曼联</li>
+        <li>切尔西</li>
+        <li>巴塞罗那</li>
+        <li>皇家马德里</li>
+        <li>拜仁慕尼黑</li>
+        <li>巴黎圣日耳曼</li>
+    </ul>
+
+    <script>
+        var oDiv = document.getElementsByTagName('div')[0];
+        var oUl = document.getElementsByTagName('ul')[0];
+        var aLi = oUl.getElementsByTagName('li');
+        var arr = [];
+
+        oDiv.onclick = function (e) {
+            var e = e || event;
+
+            try {
+                e.stopPropagation();
+            } catch (err) {
+                e.cancelBubble = true;
+            }
+
+            if (this.clicked) {
+                oUl.style.display = 'none';
+                this.clicked = false;
+            } else {
+                oUl.style.display = 'block';
+                this.clicked = true;
+            }
+        }
+
+        for (var i = 0; i < aLi.length; i++) {
+            aLi[i].onclick = function (e) {
+                var e = e || event;
+
+                if (e.ctrlKey) {
+                    try {
+                        e.stopPropagation();
+                    } catch (err) {
+                        e.cancelBubble = true;
+                    }
+
+                    if (this.clicked) {
+                        var idx = arrIndexOf(arr, this.innerHTML);
+                        arr.splice(idx, 1);
+
+                        liClick2(this);
+                    } else {
+                        arr.push(this.innerHTML);
+
+                        liClick1(this);
+                    }
+
+                    oDiv.innerHTML = arr.join('，');
+                } else {
+                    for (var i = 0; i < aLi.length; i++) {
+                        liClick2(aLi[i]);
+                    }
+
+                    arr = [];
+                    arr.push(this.innerHTML);
+                    oDiv.innerHTML = arr[0];
+
+                    liClick1(this);
+                }
+            }
+        }
+
+        document.onclick = function () {
+            oUl.style.display = 'none';
+            oDiv.clicked = false;
+        }
+        document.onselectstart = function () {
+            return false;
+        }
+
+
+        function liClick1(li) {
+            style1(li);
+            li.clicked = true;
+        }
+        function liClick2(li) {
+            style2(li);
+            li.clicked = false;
+        }
+        function style1(li) {
+            li.style.backgroundColor = 'red';
+            li.style.color = '#fff';
+        }
+        function style2(li) {
+            li.style.backgroundColor = '';
+            li.style.color = '';
+        }
+
+    </script>
+</body>
+
+</html>

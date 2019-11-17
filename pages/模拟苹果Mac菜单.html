@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="../img/ico.ico">
+    <link rel="stylesheet" href="../css/reset.css">
+    <script src="../js/common.js"></script>
+    <title>模拟苹果Mac菜单</title>
+    <style>
+        div {
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <div>
+        <img src="../img/apple/1.png" width="64">
+        <img src="../img/apple/2.png" width="64">
+        <img src="../img/apple/3.png" width="64">
+        <img src="../img/apple/4.png" width="64">
+        <img src="../img/apple/5.png" width="64">
+    </div>
+
+    <script>
+        document.onmousemove = function (e) {
+            var e = e || event;
+
+            var aTxt = document.getElementsByTagName('input');
+            var oDiv = document.getElementsByTagName('div')[0];
+            var aImg = document.getElementsByTagName('img');
+
+            for (var i = 0; i < aImg.length; i++) {
+                var x = getAbsPos(aImg[i]).left + aImg[i].offsetWidth / 2;
+                var y = getAbsPos(aImg[i]).top + aImg[i].offsetHeight / 2;
+
+                var a = x - e.clientX;
+                var b = y - e.clientY;
+
+                var dis = Math.sqrt(a * a + b * b)
+
+                var scale = 1 - dis / 300;
+
+                if (scale < 0.5) {
+                    scale = 0.5;
+                }
+
+                aImg[i].width = scale * 128;
+
+                aTxt[i].value = scale.toFixed(2);
+            }
+        }
+
+    </script>
+</body>
+
+</html>

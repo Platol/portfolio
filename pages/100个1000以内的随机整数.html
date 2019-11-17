@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="../img/ico.ico">
+    <link rel="stylesheet" href="../css/reset.css">
+    <script src="../js/common.js"></script>
+    <title>100个1000以内的随机整数</title>
+    <style>
+        p {
+            width: 600px;
+            padding: 10px;
+            margin: 50px auto;
+            line-height: 30px;
+            border: 1px solid #666;
+            border-radius: 8px;
+            text-align: justify;
+        }
+    </style>
+</head>
+
+<body>
+    <p></p>
+
+    <script>
+        var oP = document.getElementsByTagName('p')[0];
+        var arr = [];
+
+        for (var i = 0; i < 1000; i++) {
+            arr.push(i);
+        }
+
+        arr.sort(rdm);
+
+        arr.length = 100;
+
+        oP.innerHTML = arr.join(', ');
+
+    </script>
+</body>
+
+</html>
