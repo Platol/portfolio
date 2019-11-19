@@ -10,22 +10,29 @@
     <script src="../js/common.js"></script>
     <title>模拟苹果Mac菜单</title>
     <style>
-        div {
-            width: 100%;
+        #menu {
             position: absolute;
+            left: 0;
+            right: 0;
             bottom: 0;
             text-align: center;
+        }
+        #menu img {
+            cursor: pointer;
+            margin: 4px;
         }
     </style>
 </head>
 
 <body>
-    <input type="text">
-    <input type="text">
-    <input type="text">
-    <input type="text">
-    <input type="text">
     <div>
+        <input type="text">
+        <input type="text">
+        <input type="text">
+        <input type="text">
+        <input type="text">
+    </div>
+    <div id="menu">
         <img src="../img/apple/1.png" width="64">
         <img src="../img/apple/2.png" width="64">
         <img src="../img/apple/3.png" width="64">
@@ -37,8 +44,7 @@
         document.onmousemove = function (e) {
             var e = e || event;
 
-            var aTxt = document.getElementsByTagName('input');
-            var oDiv = document.getElementsByTagName('div')[0];
+            var aInput = document.getElementsByTagName('input');
             var aImg = document.getElementsByTagName('img');
 
             for (var i = 0; i < aImg.length; i++) {
@@ -48,7 +54,7 @@
                 var a = x - e.clientX;
                 var b = y - e.clientY;
 
-                var dis = Math.sqrt(a * a + b * b)
+                var dis = Math.sqrt(a * a + b * b);
 
                 var scale = 1 - dis / 300;
 
@@ -57,9 +63,12 @@
                 }
 
                 aImg[i].width = scale * 128;
-
-                aTxt[i].value = scale.toFixed(2);
+                aInput[i].value = scale.toFixed(2);
             }
+        }
+
+        document.ondragstart = function () {
+            return false;
         }
 
     </script>

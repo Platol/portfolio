@@ -14,25 +14,21 @@
             width: 3000px;
             height: 2000px;
         }
-
         ul {
             border: 1px solid #666;
             width: 100px;
-            position: absolute;
+            position: fixed;
             display: none;
         }
-
         li {
             line-height: 30px;
             text-indent: 20px;
             border-bottom: 1px dashed #ddd;
         }
-
         a {
             color: #333;
             display: block;
         }
-
         a:hover {
             background: #666;
             color: #fff;
@@ -55,13 +51,10 @@
         document.oncontextmenu = function (e) {
             var e = e || event;
 
-            var scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
-            var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-
             oMenu.style.opacity = 0;
             oMenu.style.display = 'block';
-            oMenu.style.left = e.clientX + scrollLeft + 'px';
-            oMenu.style.top = e.clientY + scrollTop + 'px';
+            oMenu.style.left = e.clientX + 'px';
+            oMenu.style.top = e.clientY + 'px';
 
             animate(oMenu, { 'opacity': 100 }, 8);
 

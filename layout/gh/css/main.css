@@ -1,6 +1,5 @@
 body {
 	margin: 0;
-	font-family: "Roboto";
 }
 
 ul, ol {
@@ -419,7 +418,10 @@ label:last-child a {
 	}
 }
 
-/*p-u-b-l-i-c*/
+
+
+
+
 
 .txt span, .txt h1, .txt p {
 	text-align: center;
