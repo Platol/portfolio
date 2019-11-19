@@ -22,6 +22,7 @@
             float: left;
             margin: 10px;
             padding: 10px;
+            border-radius: 2px;
         }
 
         h3 {
@@ -32,8 +33,7 @@
         }
 
         h3:hover {
-            background: orangered;
-            color: #fff;
+            color: crimson;
         }
 
         a {
@@ -74,7 +74,7 @@
             <li><a href="pages/替换关键字.html">替换关键字</a></li>
             <li><a href="pages/文字搬运.html">文字搬运</a></li>
             <li><a href="pages/列表弹出提示.html">列表弹出提示</a></li>
-            <li><a href="pages/页面居中弹窗（不用scrollTop）.html">页面居中弹窗（不用scrollTop）</a></li>
+            <li><a href="pages/页面居中弹窗.html">页面居中弹窗</a></li>
         </ul>
     </div>
     <div>
@@ -161,11 +161,10 @@
 
 
     <script>
-        var titles = document.getElementsByTagName('h3');
-        var subTitles = document.getElementsByTagName('a');
+        var links = document.getElementsByTagName('a');
 
-        for (var i = 0; i < subTitles.length; i++) {
-            // subTitles[i].target = '_blank';
+        for (var i = 0; i < links.length; i++) {
+            // links[i].target = '_blank';
         }
 
         document.onselectstart = function () {

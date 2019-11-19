@@ -8,7 +8,7 @@
     <link rel="icon" href="../img/ico.ico">
     <link rel="stylesheet" href="../css/reset.css">
     <script src="../js/common.js"></script>
-    <title>页面居中弹窗（不用scrollTop）</title>
+    <title>页面居中弹窗</title>
     <style>
         body {
             height: 2000px;
@@ -25,14 +25,16 @@
             display: none;
         }
         #box {
+            width: 300px;
+            height: 200px;
             background: #fff;
             border: 5px solid orange;
             position: fixed;
+            left: 50%;
+            margin-left: -150px;
+            top: 50%;
+            margin-top: -100px;
             display: none;
-            left: 32%;
-            right: 32%;
-            top: 30%;
-            bottom: 30%;
         }
         #close {
             position: absolute;
@@ -64,9 +66,6 @@
 
         oBtn.onclick = function () {
             oBox.style.display = 'block';
-            // oBox.style.left = (document.documentElement.clientWidth - oBox.offsetWidth) / 2 + 'px';
-            // oBox.style.top = (document.documentElement.clientHeight - oBox.offsetHeight) / 2 + 'px';
-
             oMask.style.display = 'block';
         }
 
