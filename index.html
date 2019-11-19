@@ -10,154 +10,169 @@
     <script src="js/common.js"></script>
     <title>Portfolio</title>
     <style>
-        body:after {
+        body {
+            margin: 10px;
+        }
+
+        section {
+            
+        }
+
+        section:after {
             content: "";
             display: block;
             clear: both;
         }
 
         div {
-            background: #f8f5e6;
-            border-top: 4px solid #e9e0b2;
+            border: 1px solid blue;
             float: left;
             margin: 10px;
             padding: 10px;
-            border-radius: 2px;
+            border-radius: 0px;
+            width: 200px;
         }
 
         h3 {
             line-height: 36px;
             padding: 0 10px;
-            cursor: pointer;
+            cursor: default;
             margin-bottom: 10px;
+            color: #fff;
+            background-color: blue;
         }
 
         h3:hover {
-            color: crimson;
+            
         }
 
         a {
             display: block;
-            padding: 6px 10px;
+            padding: 0 10px;
             color: blue;
+            line-height: 32px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
         }
 
         a:hover {
-            background: crimson;
+            background: blue;
             color: #fff;
         }
     </style>
 </head>
 
 <body>
-    <div>
-        <h3>图片及展示</h3>
-        <ul>
-            <li><a href="pages/banner 切换-淡入淡出.html">banner 切换-淡入淡出</a></li>
-            <li><a href="pages/banner 切换-左右滑动.html">banner 切换-左右滑动</a></li>
-            <li><a href="pages/图片随机滚动.html">图片随机滚动</a></li>
-            <li><a href="pages/电商广告循环展示.html">电商广告循环展示</a></li>
-            <li><a href="pages/手风琴.html">手风琴</a></li>
-        </ul>
-    </div>
-    <div>
-        <h3>内容与功能</h3>
-        <ul>
-            <li><a href="pages/星级评论.html">星级评论</a></li>
-            <li><a href="pages/电商右侧工具条.html">电商右侧工具条</a></li>
-            <li><a href="pages/选项卡及列表切换.html">选项卡及列表切换</a></li>
-            <li><a href="pages/定时器导航.html">定时器导航</a></li>
-            <li><a href="pages/按钮小效果.html">按钮小效果</a></li>
-            <li><a href="pages/日期 & 时间.html">日期 & 时间</a></li>
-            <li><a href="pages/倒计时.html">倒计时</a></li>
-            <li><a href="pages/查找关键字.html">查找关键字</a></li>
-            <li><a href="pages/替换关键字.html">替换关键字</a></li>
-            <li><a href="pages/文字搬运.html">文字搬运</a></li>
-            <li><a href="pages/列表弹出提示.html">列表弹出提示</a></li>
-            <li><a href="pages/页面居中弹窗.html">页面居中弹窗</a></li>
-        </ul>
-    </div>
-    <div>
-        <h3>表格和表单</h3>
-        <ul>
-            <li><a href="pages/获取radio、checkbox的选中值.html">获取radio、checkbox的选中值</a></li>
-            <li><a href="pages/增、删、隔行变色…….html">增、删、隔行变色……</a></li>
-            <li><a href="pages/模拟select单选.html">模拟select单选</a></li>
-            <li><a href="pages/模拟select多选（Ctrl键+鼠标左键）.html">模拟select多选（Ctrl键+鼠标左键）</a></li>
-        </ul>
-    </div>
-    <div>
-        <h3>页面布局</h3>
-        <ul>
-            <li><a href="layout/ms">微软[Bootstrap]响应式布局</a></li>
-            <li><a href="layout/gh">GitHub[原生]响应式布局</a></li>
-            <li><a href="layout/jd">京东布局（未完，待续……）</a></li>
-        </ul>
-    </div>
-    <div>
-        <h3>JS深入应用</h3>
-        <ul>
-            <li><a href="pages/模拟苹果Mac菜单.html">模拟苹果Mac菜单</a></li>
-            <li><a href="pages/解决按键移动时的停顿问题.html">解决按键移动时的停顿问题</a></li>
-            <li><a href="pages/模拟滚动条-控制高度.html">模拟滚动条-控制高度</a></li>
-            <li><a href="pages/模拟滚动条及滚轮事件.html">模拟滚动条及滚轮事件</a></li>
-            <li><a href="pages/模拟右键菜单.html">模拟右键菜单</a></li>
-            <li><a href="pages/布局转换.html">布局转换</a></li>
-        </ul>
-    </div>
-    <div>
-        <h3>JS运动</h3>
-        <ul>
-            <li><a href="pages/弹性运动.html">弹性运动</a></li>
-            <li><a href="pages/刚性运动.html">刚性运动</a></li>
-            <li><a href="pages/抖一抖.html">抖一抖</a></li>
-        </ul>
-    </div>
-    <div>
-        <h3>JS拖拽</h3>
-        <ul>
-            <li><a href="pages/固定区域内拖拽.html">固定区域内拖拽</a></li>
-            <li><a href="pages/拖拽之磁性吸附.html">拖拽之磁性吸附</a></li>
-            <li><a href="pages/照片墙-图片换位.html">照片墙-图片换位</a></li>
-            <li><a href="pages/鼠标绘制正方形.html">鼠标绘制正方形</a></li>
-            <li><a href="pages/拖拽过程回放.html">拖拽过程回放</a></li>
-            <li><a href="pages/碰撞检测.html">碰撞检测</a></li>
-            <li><a href="pages/拖拽改变大小.html">拖拽改变大小</a></li>
-        </ul>
-    </div>
-    <div>
-        <h3>ajax</h3>
-        <ul>
-            <li><a href="ajax/级联菜单">级联菜单</a></li>
-            <li><a href="ajax/瀑布流">瀑布流</a></li>
-        </ul>
-    </div>
-    <div>
-        <h3>CSS3动效</h3>
-        <ul>
-            <li><a href="pages/表盘.html">表盘</a></li>
-            <li><a href="pages/扇形菜单.html">扇形菜单</a></li>
-        </ul>
-    </div>
-    <div>
-        <h3>小游戏</h3>
-        <ul>
-            <li><a href="pages/消除QQ表情小游戏.html">消除QQ表情小游戏</a></li>
-        </ul>
-    </div>
-    <div>
-        <h3>其他示例</h3>
-        <ul>
-            <li><a href="pages/纯CSS绘制三角形.html">纯CSS绘制三角形</a></li>
-            <li><a href="pages/图片img的onload.html">图片img的onload</a></li>
-            <li><a href="pages/V字仇杀.html">V字仇杀</a></li>
-            <li><a href="pages/自动生成100个li.html">自动生成100个li</a></li>
-            <li><a href="pages/擦出图片.html">擦出图片</a></li>
-            <li><a href="pages/模拟表格.html">模拟表格</a></li>
-            <li><a href="pages/100个1000以内的随机整数.html">100个1000以内的随机整数</a></li>
-        </ul>
-    </div>
-
+    <section>
+        <div>
+            <h3>图片及展示</h3>
+            <ul>
+                <li><a href="pages/banner 切换-淡入淡出.html">banner 切换-淡入淡出</a></li>
+                <li><a href="pages/banner 切换-左右滑动.html">banner 切换-左右滑动</a></li>
+                <li><a href="pages/图片随机滚动.html">图片随机滚动</a></li>
+                <li><a href="pages/电商广告循环展示.html">电商广告循环展示</a></li>
+                <li><a href="pages/手风琴.html">手风琴</a></li>
+            </ul>
+        </div>
+        <div>
+            <h3>内容与功能</h3>
+            <ul>
+                <li><a href="pages/星级评论.html">星级评论</a></li>
+                <li><a href="pages/电商右侧工具条.html">电商右侧工具条</a></li>
+                <li><a href="pages/选项卡及列表切换.html">选项卡及列表切换</a></li>
+                <li><a href="pages/定时器导航.html">定时器导航</a></li>
+                <li><a href="pages/按钮小效果.html">按钮小效果</a></li>
+                <li><a href="pages/日期 & 时间.html">日期 & 时间</a></li>
+                <li><a href="pages/倒计时.html">倒计时</a></li>
+                <li><a href="pages/查找关键字.html">查找关键字</a></li>
+                <li><a href="pages/替换关键字.html">替换关键字</a></li>
+                <li><a href="pages/文字搬运.html">文字搬运</a></li>
+                <li><a href="pages/列表弹出提示.html">列表弹出提示</a></li>
+                <li><a href="pages/页面居中弹窗.html">页面居中弹窗</a></li>
+            </ul>
+        </div>
+        <div>
+            <h3>表格和表单</h3>
+            <ul>
+                <li><a href="pages/获取radio、checkbox的选中值.html">获取radio、checkbox的选中值</a></li>
+                <li><a href="pages/增、删、隔行变色…….html">增、删、隔行变色……</a></li>
+                <li><a href="pages/模拟select单选.html">模拟select单选</a></li>
+                <li><a href="pages/模拟select多选（Ctrl键+鼠标左键）.html">模拟select多选（Ctrl键+鼠标左键）</a></li>
+            </ul>
+        </div>
+        <div>
+            <h3>页面布局</h3>
+            <ul>
+                <li><a href="layout/ms">微软[Bootstrap]响应式布局</a></li>
+                <li><a href="layout/gh">GitHub[原生]响应式布局</a></li>
+                <li><a href="layout/jd">京东布局（未完，待续……）</a></li>
+            </ul>
+        </div>
+        <div>
+            <h3>JS深入应用</h3>
+            <ul>
+                <li><a href="pages/模拟苹果Mac菜单.html">模拟苹果Mac菜单</a></li>
+                <li><a href="pages/解决按键移动时的停顿问题.html">解决按键移动时的停顿问题</a></li>
+                <li><a href="pages/模拟滚动条-控制高度.html">模拟滚动条-控制高度</a></li>
+                <li><a href="pages/模拟滚动条及滚轮事件.html">模拟滚动条及滚轮事件</a></li>
+                <li><a href="pages/模拟右键菜单.html">模拟右键菜单</a></li>
+                <li><a href="pages/布局转换.html">布局转换</a></li>
+            </ul>
+        </div>
+        <div>
+            <h3>JS运动</h3>
+            <ul>
+                <li><a href="pages/弹性运动.html">弹性运动</a></li>
+                <li><a href="pages/刚性运动.html">刚性运动</a></li>
+                <li><a href="pages/抖一抖.html">抖一抖</a></li>
+            </ul>
+        </div>
+        <div>
+            <h3>JS拖拽</h3>
+            <ul>
+                <li><a href="pages/固定区域内拖拽.html">固定区域内拖拽</a></li>
+                <li><a href="pages/拖拽之磁性吸附.html">拖拽之磁性吸附</a></li>
+                <li><a href="pages/照片墙-图片换位.html">照片墙-图片换位</a></li>
+                <li><a href="pages/鼠标绘制正方形.html">鼠标绘制正方形</a></li>
+                <li><a href="pages/拖拽过程回放.html">拖拽过程回放</a></li>
+                <li><a href="pages/碰撞检测.html">碰撞检测</a></li>
+                <li><a href="pages/拖拽改变大小.html">拖拽改变大小</a></li>
+            </ul>
+        </div>
+        <div>
+            <h3>ajax</h3>
+            <ul>
+                <li><a href="ajax/级联菜单">级联菜单</a></li>
+                <li><a href="ajax/瀑布流">瀑布流</a></li>
+            </ul>
+        </div>
+        <div>
+            <h3>CSS3动效</h3>
+            <ul>
+                <li><a href="pages/表盘.html">表盘</a></li>
+                <li><a href="pages/扇形菜单.html">扇形菜单</a></li>
+            </ul>
+        </div>
+        <div>
+            <h3>小游戏</h3>
+            <ul>
+                <li><a href="pages/消除QQ表情小游戏.html">消除QQ表情小游戏</a></li>
+            </ul>
+        </div>
+        <div>
+            <h3>其他示例</h3>
+            <ul>
+                <li><a href="pages/纯CSS绘制三角形.html">纯CSS绘制三角形</a></li>
+                <li><a href="pages/图片img的onload.html">图片img的onload</a></li>
+                <li><a href="pages/V字仇杀.html">V字仇杀</a></li>
+                <li><a href="pages/自动生成100个li.html">自动生成100个li</a></li>
+                <li><a href="pages/擦出图片.html">擦出图片</a></li>
+                <li><a href="pages/模拟表格.html">模拟表格</a></li>
+                <li><a href="pages/100个1000以内的随机整数.html">100个1000以内的随机整数</a></li>
+            </ul>
+        </div>
+    </section>
 
 
     <script>
@@ -165,11 +180,80 @@
 
         for (var i = 0; i < links.length; i++) {
             // links[i].target = '_blank';
+            links[i].title = links[i].innerHTML;
         }
 
-        document.onselectstart = function () {
-            return false;
+
+
+
+
+        /*
+        ** 将浮动布局转换为定位布局，以达成瀑布流的效果。
+        ** 纯js原生，略有不足，待完善……
+        */
+
+        var cards = document.getElementsByTagName('div');
+        var arrTop = [];
+        var arrHeight = [];
+        var cols = 0;
+
+        for (var i = 0; i < cards.length; i++) {
+            arrTop.push(cards[i].offsetTop);
+            arrHeight.push(cards[i].offsetHeight);
         }
+
+        for (var i = 0; i < arrTop.length; i++) {
+            if (arrTop[i] != 20) {
+                cols = arrTop.slice(0, i).length;
+                break;
+            }
+        }
+
+        var colsHeight = arrHeight.slice(0, cols);
+        var minHeight = null;
+        var minIndex = null;
+
+        for (var i = 0; i < cards.length; i++) {
+            var card = cards[i];
+
+            card.style.position = 'absolute';
+
+            if (i < cols) {
+                card.style.top = '10px';
+                card.style.left = i * 240 + 10 + 'px';
+            }
+
+            if (i >= cols) {
+                minHeight = Math.min.apply(null, colsHeight);
+                for (var j = 0; j < colsHeight.length; j++) {
+                    if (minHeight == colsHeight[j]) {
+                        minIndex = j;
+                        break;
+                    }
+                }
+                card.style.top = minHeight + 30 + 'px';
+                card.style.left = minIndex * 240 + 10 + 'px';
+
+                colsHeight[minIndex] = minHeight + card.offsetHeight + 20;
+            }
+        }
+
+        var maxHeight = Math.max.apply(null, colsHeight);
+
+        document.getElementsByTagName('section')[0].style.height = maxHeight + 20 + 'px';
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     </script>
 </body>
