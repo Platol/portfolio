@@ -27,8 +27,7 @@
             margin: 10px;
             padding: 10px;
             border-radius: 0px;
-            width: 220px;
-            box-sizing: border-box;
+            width: 200px;
             transition: all .8s ease 0s;
             border-top-width: 4px;
         }
@@ -192,7 +191,7 @@
 
 
 
-        /******** 原生js瀑布流实现，完全响应式 ********/
+        /******** 原生js瀑布流实现，完全响应式，兼容至 IE7 ********/
 
 
         // 预设列数
@@ -259,7 +258,10 @@
 
                 // 由于是从浮动布局转换为定位布局，所以页面初次载入需设置定位
                 // 当然，窗口尺寸变化时，由于已经设置过定位，所以无需重复设置
-                if (getComputedStyle(card).position == 'absolute') break;
+
+                // IE7/8 不支持 getComputedStyle，需做兼容处理
+                if (window.getComputedStyle && getComputedStyle(card).position == 'absolute') break;
+                if (card.currentStyle && card.currentStyle.position == 'absolute') break;
 
                 card.style.position = 'absolute';
                 card.style.margin = 0;
