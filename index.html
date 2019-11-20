@@ -22,12 +22,15 @@
 
         div {
             border: 1px solid blue;
+            background: #fff;
             float: left;
             margin: 10px;
             padding: 10px;
             border-radius: 0px;
             width: 220px;
             box-sizing: border-box;
+            transition: all .8s ease 0s;
+            border-top-width: 4px;
         }
 
         h3 {
@@ -36,8 +39,7 @@
             padding: 0 10px;
             cursor: default;
             margin-bottom: 10px;
-            color: #fff;
-            background-color: blue;
+            color: blue;
         }
 
         ul {
@@ -182,6 +184,10 @@
             links[i].title = links[i].innerHTML;
         }
 
+        document.onselectstart = function () {
+            return false;
+        }
+
 
 
 
@@ -217,7 +223,11 @@
             // 页面中所有 card(div元素)
             var cards = document.getElementsByTagName('div');
             // 保存每列高度的数组
-            var colsHeight = [];
+            var colsHeight = new Array(cols);
+            // 填充 colsHeight 每一项为 0
+            for (var i = 0; i < colsHeight.length; i++) {
+                colsHeight[i] = 0;
+            }
             // 最小列高
             var minHeight = null;
             // 最小列高在列高数组中的索引
@@ -227,33 +237,29 @@
             for (var i = 0; i < cards.length; i++) {
                 var card = cards[i];
 
-                if (i < cols) { // 首行
-                    card.style.left = i * 240 + 20 + 'px';
-                    card.style.top = '20px';
-
-                    // 更新列高数组
-                    colsHeight.push(card.offsetHeight + 20);
-                } else {    // 首行以后
-                    // 找出最小列高
-                    minHeight = Math.min.apply(null, colsHeight);
-                    // 循环列高数组，更新 minIndex
-                    for (var j = 0; j < colsHeight.length; j++) {
-                        if (minHeight == colsHeight[j]) {
-                            minIndex = j;
-                            break;
-                        }
+                // 找出最小列高
+                minHeight = Math.min.apply(null, colsHeight);
+                // 循环列高数组，更新 minIndex
+                for (var j = 0; j < colsHeight.length; j++) {
+                    if (minHeight == colsHeight[j]) {
+                        minIndex = j;
+                        break;
                     }
-                    card.style.left = minIndex * 240 + 20 + 'px';
-                    card.style.top = minHeight + 20 + 'px';
-
-                    // 更新 card 位置之后，card 所处列的高度随即发生变化
-                    colsHeight[minIndex] = minHeight + card.offsetHeight + 20;
                 }
+                card.style.left = minIndex * 240 + 20 + 'px';
+                card.style.top = minHeight + 20 + 'px';
+
+                // 更新 card 位置之后，card 所处列的高度随即发生变化
+                colsHeight[minIndex] = minHeight + card.offsetHeight + 20;
             }
 
             // 第二次循环
             for (var i = 0; i < cards.length; i++) {
                 var card = cards[i];
+
+                // 由于是从浮动布局转换为定位布局，所以页面初次载入需设置定位
+                // 当然，窗口尺寸变化时，由于已经设置过定位，所以无需重复设置
+                if (getComputedStyle(card).position == 'absolute') break;
 
                 card.style.position = 'absolute';
                 card.style.margin = 0;
@@ -261,7 +267,7 @@
 
             // 计算出最高列的高度
             var maxHeight = Math.max.apply(null, colsHeight);
-            // 给 body 的高度赋值
+            // 给 body 的高度赋值，否则 body 会高度塌陷
             document.body.style.height = maxHeight + 'px';
         }
 
