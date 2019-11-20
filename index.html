@@ -9,32 +9,28 @@
     <title>Portfolio</title>
     <style>
         body {
-            padding: 10px;
             margin: 0 auto;
             position: relative;
         }
 
-        body:after {
-            content: "";
-            display: block;
-            clear: both;
+        div {
+            position: absolute;
+            border: 1px solid blue;
+            background-color: #fff;
+            padding: 10px;
+            width: 198px;
+            transition: left .8s ease 0s, top .8s ease 0s, box-shadow .4s ease 0s, transform .4s ease 0s;
+            border-top-width: 4px;
         }
 
-        div {
-            border: 1px solid blue;
-            background: #fff;
-            float: left;
-            margin: 10px;
-            padding: 10px;
-            border-radius: 0px;
-            width: 200px;
-            transition: all .8s ease 0s;
-            border-top-width: 4px;
+        div:hover {
+            box-shadow: 0px 2px 5px rgba(0, 0, 255, 0.3);
+            transform: translateY(-4px);
         }
 
         h3 {
             margin: 0;
-            line-height: 36px;
+            line-height: 32px;
             padding: 0 10px;
             cursor: default;
             margin-bottom: 10px;
@@ -56,10 +52,11 @@
             white-space: nowrap;
             text-overflow: ellipsis;
             overflow: hidden;
+            transition: background-color .5s ease 0s;
         }
 
         a:hover {
-            background: blue;
+            background-color: blue;
             color: #fff;
         }
     </style>
@@ -176,12 +173,19 @@
 
 
     <script>
+        // 页面中所有 link(a元素)
         var links = document.getElementsByTagName('a');
 
         for (var i = 0; i < links.length; i++) {
-            // links[i].target = '_blank';
-            links[i].title = links[i].innerHTML;
+            var link = links[i];
+
+            // link.target = '_blank';
+            link.title = links[i].innerHTML;
         }
+
+
+
+
 
         document.onselectstart = function () {
             return false;
@@ -194,8 +198,13 @@
         /******** 原生js瀑布流实现，完全响应式，兼容至 IE7 ********/
 
 
-        // 预设列数
-        var lastCols = null;
+        // 常量
+        var CARD_WIDTH = 220,   // card 宽度 220
+            CARD_GAP = 20,  // card 间隔 20
+            CARD_AREA = CARD_WIDTH + CARD_GAP;  // card 所占区域为二者之和 240
+
+        // 预设保存每列高度的数组
+        var colsHeight = [];
 
         // 页面加载时，执行
         waterfall();
@@ -206,38 +215,37 @@
         function waterfall() {
             // 文档宽度
             var docWidth = document.documentElement.clientWidth;
-            // body 宽度
-            var bodyWidth = docWidth - 20;
+            // 减去其两侧的 padding 20px，得出可用宽度
+            var _width = docWidth - CARD_GAP;
             // 计算列数
-            var cols = Math.floor(bodyWidth / 240);
+            var cols = Math.floor(_width / CARD_AREA);
 
             // 如果列数前后相等，不执行函数
-            if (cols == lastCols) return;
+            if (cols == colsHeight.length) return;
 
-            // 更新列数
-            lastCols = cols;
-            // 给 body 设置宽度
-            document.body.style.width = cols * 240 + 'px';
+            // 给 body 设置 width 和 padding，使其可在页面内水平居中。
+            document.body.style.width = cols * CARD_AREA + 'px';
+            document.body.style.padding = CARD_GAP / 2 + 'px';
 
-            // 页面中所有 card(div元素)
-            var cards = document.getElementsByTagName('div');
-            // 保存每列高度的数组
-            var colsHeight = new Array(cols);
+            // 更新列高数组
+            colsHeight = new Array(cols);
             // 填充 colsHeight 每一项为 0
             for (var i = 0; i < colsHeight.length; i++) {
                 colsHeight[i] = 0;
             }
-            // 最小列高
-            var minHeight = null;
-            // 最小列高在列高数组中的索引
-            var minIndex = null;
 
-            // 第一次循环
+            // 页面中所有 card(div元素)
+            var cards = document.getElementsByTagName('div');
+
+            // 遍历 cards
             for (var i = 0; i < cards.length; i++) {
                 var card = cards[i];
 
                 // 找出最小列高
-                minHeight = Math.min.apply(null, colsHeight);
+                var minHeight = Math.min.apply(null, colsHeight);
+                // 最小列高在列高数组中的索引
+                var minIndex;
+
                 // 循环列高数组，更新 minIndex
                 for (var j = 0; j < colsHeight.length; j++) {
                     if (minHeight == colsHeight[j]) {
@@ -245,31 +253,17 @@
                         break;
                     }
                 }
-                card.style.left = minIndex * 240 + 20 + 'px';
-                card.style.top = minHeight + 20 + 'px';
+                card.style.left = minIndex * CARD_AREA + CARD_GAP + 'px';
+                card.style.top = minHeight + CARD_GAP + 'px';
 
                 // 更新 card 位置之后，card 所处列的高度随即发生变化
-                colsHeight[minIndex] = minHeight + card.offsetHeight + 20;
+                colsHeight[minIndex] = minHeight + CARD_GAP + card.offsetHeight;
             }
 
-            // 第二次循环
-            for (var i = 0; i < cards.length; i++) {
-                var card = cards[i];
-
-                // 由于是从浮动布局转换为定位布局，所以页面初次载入需设置定位
-                // 当然，窗口尺寸变化时，由于已经设置过定位，所以无需重复设置
-
-                // IE7/8 不支持 getComputedStyle，需做兼容处理
-                if (window.getComputedStyle && getComputedStyle(card).position == 'absolute') break;
-                if (card.currentStyle && card.currentStyle.position == 'absolute') break;
-
-                card.style.position = 'absolute';
-                card.style.margin = 0;
-            }
-
-            // 计算出最高列的高度
+            // 找出最大列高
             var maxHeight = Math.max.apply(null, colsHeight);
             // 给 body 的高度赋值，否则 body 会高度塌陷
+            // 其实不设置 body 高度，视觉上也并无不妥，只是更趋完善而已！
             document.body.style.height = maxHeight + 'px';
         }
 
