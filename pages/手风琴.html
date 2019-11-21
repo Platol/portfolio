@@ -84,23 +84,28 @@
 
     <script>
         var aH4 = document.getElementsByTagName('h4');
-        var aPanelBody = document.querySelectorAll('.panel-body');
 
         for (var i = 0; i < aH4.length; i++) {
             aH4[i].onclick = function () {
-                for (var i = 0; i < aPanelBody.length; i++) {
-                    doMove(aPanelBody[i], { 'height': 0 }, 5);
-                }
-
                 var panelBody = getNext(this);
 
-                if (panelBody.offsetHeight == 0) {
-                    doMove(panelBody, { 'height': panelBody.children[0].offsetHeight }, 5);
-                } else {
+                if (this.opened) {
                     doMove(panelBody, { 'height': 0 }, 5);
+                } else {
+                    for (var j = 0; j < aH4.length; j++) {
+                        if (aH4[j].opened) {
+                            doMove(getNext(aH4[j]), { 'height': 0 }, 5);
+                            aH4[j].opened = false;
+                            break;
+                        }
+                    }
+                    doMove(panelBody, { 'height': panelBody.children[0].offsetHeight }, 5);
                 }
+
+                this.opened = !this.opened;
             }
         }
+
 
         function doMove(elem, obj, n, callback) {
             clearInterval(elem.timer);

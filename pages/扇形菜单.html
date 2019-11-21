@@ -101,7 +101,7 @@
             color: #fff;
             text-align: center;
             line-height: 50px;
-            background: rgba(0, 0, 0, 0.9);
+            background: #111;
             border-radius: 50%;
             transition: 1s;
         }
@@ -157,13 +157,13 @@
                 this.style.transition = '0.3s';
                 this.style.transform = 'scale(2) rotate(-720deg)';
                 this.style.opacity = 0.2;
-                this.addEventListener('transitionend', end, false);
+                this.addEventListener('transitionend', end);
 
                 function end() {
                     this.style.transition = '0.1s';
                     this.style.transform = 'scale(1) rotate(-720deg)';
                     this.style.opacity = 1;
-                    this.removeEventListener('transitionend', end, false);
+                    this.removeEventListener('transitionend', end);
                 }
             }
         }
