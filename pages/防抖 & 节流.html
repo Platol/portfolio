@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>防抖 & 节流</title>
+</head>
+
+<body>
+    <input type="text">
+
+    <script>
+        var input = document.getElementsByTagName('input')[0];
+
+
+        input.onkeyup = debounce(foo, 300);
+
+        function foo() {
+            console.log(this.value);
+        }
+
+
+        window.onresize = throttle(bar, 300);
+
+        function bar() {
+            console.log(document.documentElement.clientWidth);
+        }
+
+
+
+        // 节流
+        // 阻止高频触发
+        // 每隔指定时间（delay）触发一次。
+        // 总结：无论频率快慢，都会按指定 delay 均匀触发！
+        // 适用：resize、scroll……
+        function throttle(fn, delay) {
+            var lock = false;
+
+            return function () {
+                if (lock) return;
+
+                var that = this,
+                    args = arguments;
+
+                lock = true;
+
+                setTimeout(function () {
+                    fn.apply(that, args);
+                    lock = false;
+                }, delay);
+            }
+        }
+
+
+        // 防抖
+        // 阻止高频触发
+        // 每次都延迟指定时间（delay）再触发，如果前后间隔小于指定时间（delay），则重新计时。
+        // 总结：频率过快（小于 delay）时，则只会在大于 delay 时才触发！
+        // 适用：keyup……
+        function debounce(fn, delay) {
+            var timer;
+
+            return function () {
+                clearTimeout(timer);
+
+                var that = this,
+                    args = arguments;
+
+                timer = setTimeout(function () {
+                    fn.apply(that, args);
+                }, delay);
+            };
+        }    
+    </script>
+</body>
+
+</html>

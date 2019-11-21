@@ -116,6 +116,7 @@
             <li><a href="pages/模拟滚动条及滚轮事件.html">模拟滚动条及滚轮事件</a></li>
             <li><a href="pages/模拟右键菜单.html">模拟右键菜单</a></li>
             <li><a href="pages/布局转换.html">布局转换</a></li>
+            <li><a href="pages/防抖 & 节流.html">防抖 & 节流</a></li>
         </ul>
     </div>
     <div>
@@ -206,10 +207,12 @@
         // 预设保存每列高度的数组
         var colsHeight = [];
 
+
+        
         // 页面加载时，执行
         waterfall();
         // 窗口尺寸改变时，执行
-        window.onresize = waterfall;
+        window.onresize = throttle(waterfall, 300);
 
 
         function waterfall() {
@@ -265,6 +268,26 @@
             // 给 body 的高度赋值，否则 body 会高度塌陷
             // 其实不设置 body 高度，视觉上也并无不妥，只是更趋完善而已！
             document.body.style.height = maxHeight + 'px';
+        }
+
+
+        // 事件节流，防止事件高频触发！！
+        function throttle(fn, delay) {
+            var lock = false;
+
+            return function () {
+                if (lock) return;
+
+                var that = this,
+                    args = arguments;
+
+                lock = true;
+
+                setTimeout(function () {
+                    fn.apply(that, args);
+                    lock = false;
+                }, delay);
+            }
         }
 
     </script>
