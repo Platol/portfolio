@@ -60,10 +60,12 @@
         }
 
         #btm {
-            position: absolute;
-            bottom: 20px;
+            position: relative;
             background: url(../img/jd/bg.png) 0 -260px repeat-x;
             height: 20px;
+            margin: 0 auto;
+            margin-top: 300px;
+            z-index: 99;
         }
 
         span {
@@ -121,7 +123,7 @@
         var n = 0;
 
         oBtm.style.width = arr.length * 22 + 'px';
-        oBtm.style.left = (oWrap.clientWidth - oBtm.offsetWidth) / 2 + 'px';
+
         for (var i = 0; i < arr.length; i++) {
             var oLi = document.createElement('li');
             oLi.innerHTML = '<a href="javascript:;"><img src="' + arr[i] + '"></a>';
@@ -129,6 +131,7 @@
 
             oUl.innerHTML += '<li></li>'
         }
+
         oOl.style.width = 790 * arr.length + 'px';
 
         fn();
