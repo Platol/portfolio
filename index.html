@@ -8,15 +8,16 @@
     <link rel="icon" href="img/ico.ico">
     <title>Portfolio</title>
     <style>
-        html {
-            height: 100%;
-        }
         body {
-            margin: 0 auto;
+            margin: 0;
+        }
+
+        #container {
+            margin: 20px auto;
             position: relative;
         }
 
-        div {
+        .card {
             position: absolute;
             border: 1px solid blue;
             background-color: #fff;
@@ -26,7 +27,7 @@
             border-top-width: 4px;
         }
 
-        div:hover {
+        .card:hover {
             box-shadow: 0px 2px 5px rgba(0, 0, 255, 0.3);
             transform: translateY(-4px);
         }
@@ -66,104 +67,107 @@
 </head>
 
 <body>
-    <div>
-        <h3>图片及展示</h3>
-        <ul>
-            <li><a href="pages/banner 切换-淡入淡出.html">banner 切换-淡入淡出</a></li>
-            <li><a href="pages/banner 切换-左右滑动.html">banner 切换-左右滑动</a></li>
-            <li><a href="pages/图片随机滚动.html">图片随机滚动</a></li>
-            <li><a href="pages/电商广告循环展示.html">电商广告循环展示</a></li>
-            <li><a href="pages/手风琴.html">手风琴</a></li>
-        </ul>
+    <div id="container">
+        <div class="card">
+            <h3>图片及展示</h3>
+            <ul>
+                <li><a href="pages/banner 切换-淡入淡出.html">banner 切换-淡入淡出</a></li>
+                <li><a href="pages/banner 切换-左右滑动.html">banner 切换-左右滑动</a></li>
+                <li><a href="pages/图片随机滚动.html">图片随机滚动</a></li>
+                <li><a href="pages/电商广告循环展示.html">电商广告循环展示</a></li>
+                <li><a href="pages/手风琴.html">手风琴</a></li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>内容与功能</h3>
+            <ul>
+                <li><a href="pages/星级评论.html">星级评论</a></li>
+                <li><a href="pages/电商右侧工具条.html">电商右侧工具条</a></li>
+                <li><a href="pages/选项卡及列表切换.html">选项卡及列表切换</a></li>
+                <li><a href="pages/定时器导航.html">定时器导航</a></li>
+                <li><a href="pages/日期 & 时间.html">日期 & 时间</a></li>
+                <li><a href="pages/倒计时.html">倒计时</a></li>
+                <li><a href="pages/查找关键字.html">查找关键字</a></li>
+                <li><a href="pages/替换关键字.html">替换关键字</a></li>
+                <li><a href="pages/文字搬运.html">文字搬运</a></li>
+                <li><a href="pages/列表弹出提示.html">列表弹出提示</a></li>
+                <li><a href="pages/页面居中弹窗.html">页面居中弹窗</a></li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>表格和表单</h3>
+            <ul>
+                <li><a href="pages/获取radio、checkbox的选中值.html">获取radio、checkbox的选中值</a></li>
+                <li><a href="pages/增、删、隔行变色…….html">增、删、隔行变色……</a></li>
+                <li><a href="pages/模拟select单选.html">模拟select单选</a></li>
+                <li><a href="pages/模拟select多选（Ctrl键+鼠标左键）.html">模拟select多选（Ctrl键+鼠标左键）</a></li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>页面布局</h3>
+            <ul>
+                <li><a href="layout/ms">微软[Bootstrap]响应式布局</a></li>
+                <li><a href="layout/gh">GitHub[原生]响应式布局</a></li>
+                <li><a href="layout/jd">京东布局（未完，待续……）</a></li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>JS深入应用</h3>
+            <ul>
+                <li><a href="pages/模拟苹果Mac菜单.html">模拟苹果Mac菜单</a></li>
+                <li><a href="pages/解决按键移动时的停顿问题.html">解决按键移动时的停顿问题</a></li>
+                <li><a href="pages/模拟滚动条-控制高度.html">模拟滚动条-控制高度</a></li>
+                <li><a href="pages/模拟滚动条及滚轮事件.html">模拟滚动条及滚轮事件</a></li>
+                <li><a href="pages/防抖 & 节流.html">防抖 & 节流</a></li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>JS运动</h3>
+            <ul>
+                <li><a href="pages/弹性运动.html">弹性运动</a></li>
+                <li><a href="pages/刚性运动.html">刚性运动</a></li>
+                <li><a href="pages/抖一抖.html">抖一抖</a></li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>JS拖拽</h3>
+            <ul>
+                <li><a href="pages/固定区域内拖拽.html">固定区域内拖拽</a></li>
+                <li><a href="pages/拖拽之磁性吸附.html">拖拽之磁性吸附</a></li>
+                <li><a href="pages/照片墙-图片换位.html">照片墙-图片换位</a></li>
+                <li><a href="pages/鼠标绘制正方形.html">鼠标绘制正方形</a></li>
+                <li><a href="pages/碰撞检测.html">碰撞检测</a></li>
+                <li><a href="pages/拖拽改变大小.html">拖拽改变大小</a></li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>ajax</h3>
+            <ul>
+                <li><a href="ajax/级联菜单">级联菜单</a></li>
+                <li><a href="ajax/瀑布流">瀑布流</a></li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>CSS3动效</h3>
+            <ul>
+                <li><a href="pages/表盘.html">表盘</a></li>
+                <li><a href="pages/扇形菜单.html">扇形菜单</a></li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>小游戏</h3>
+            <ul>
+                <li><a href="pages/消除QQ表情小游戏.html">消除QQ表情小游戏</a></li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>其他示例</h3>
+            <ul>
+                <li><a href="pages/纯CSS绘制三角形.html">纯CSS绘制三角形</a></li>
+            </ul>
+        </div>
     </div>
-    <div>
-        <h3>内容与功能</h3>
-        <ul>
-            <li><a href="pages/星级评论.html">星级评论</a></li>
-            <li><a href="pages/电商右侧工具条.html">电商右侧工具条</a></li>
-            <li><a href="pages/选项卡及列表切换.html">选项卡及列表切换</a></li>
-            <li><a href="pages/定时器导航.html">定时器导航</a></li>
-            <li><a href="pages/日期 & 时间.html">日期 & 时间</a></li>
-            <li><a href="pages/倒计时.html">倒计时</a></li>
-            <li><a href="pages/查找关键字.html">查找关键字</a></li>
-            <li><a href="pages/替换关键字.html">替换关键字</a></li>
-            <li><a href="pages/文字搬运.html">文字搬运</a></li>
-            <li><a href="pages/列表弹出提示.html">列表弹出提示</a></li>
-            <li><a href="pages/页面居中弹窗.html">页面居中弹窗</a></li>
-        </ul>
-    </div>
-    <div>
-        <h3>表格和表单</h3>
-        <ul>
-            <li><a href="pages/获取radio、checkbox的选中值.html">获取radio、checkbox的选中值</a></li>
-            <li><a href="pages/增、删、隔行变色…….html">增、删、隔行变色……</a></li>
-            <li><a href="pages/模拟select单选.html">模拟select单选</a></li>
-            <li><a href="pages/模拟select多选（Ctrl键+鼠标左键）.html">模拟select多选（Ctrl键+鼠标左键）</a></li>
-        </ul>
-    </div>
-    <div>
-        <h3>页面布局</h3>
-        <ul>
-            <li><a href="layout/ms">微软[Bootstrap]响应式布局</a></li>
-            <li><a href="layout/gh">GitHub[原生]响应式布局</a></li>
-            <li><a href="layout/jd">京东布局（未完，待续……）</a></li>
-        </ul>
-    </div>
-    <div>
-        <h3>JS深入应用</h3>
-        <ul>
-            <li><a href="pages/模拟苹果Mac菜单.html">模拟苹果Mac菜单</a></li>
-            <li><a href="pages/解决按键移动时的停顿问题.html">解决按键移动时的停顿问题</a></li>
-            <li><a href="pages/模拟滚动条-控制高度.html">模拟滚动条-控制高度</a></li>
-            <li><a href="pages/模拟滚动条及滚轮事件.html">模拟滚动条及滚轮事件</a></li>
-            <li><a href="pages/防抖 & 节流.html">防抖 & 节流</a></li>
-        </ul>
-    </div>
-    <div>
-        <h3>JS运动</h3>
-        <ul>
-            <li><a href="pages/弹性运动.html">弹性运动</a></li>
-            <li><a href="pages/刚性运动.html">刚性运动</a></li>
-            <li><a href="pages/抖一抖.html">抖一抖</a></li>
-        </ul>
-    </div>
-    <div>
-        <h3>JS拖拽</h3>
-        <ul>
-            <li><a href="pages/固定区域内拖拽.html">固定区域内拖拽</a></li>
-            <li><a href="pages/拖拽之磁性吸附.html">拖拽之磁性吸附</a></li>
-            <li><a href="pages/照片墙-图片换位.html">照片墙-图片换位</a></li>
-            <li><a href="pages/鼠标绘制正方形.html">鼠标绘制正方形</a></li>
-            <li><a href="pages/碰撞检测.html">碰撞检测</a></li>
-            <li><a href="pages/拖拽改变大小.html">拖拽改变大小</a></li>
-        </ul>
-    </div>
-    <div>
-        <h3>ajax</h3>
-        <ul>
-            <li><a href="ajax/级联菜单">级联菜单</a></li>
-            <li><a href="ajax/瀑布流">瀑布流</a></li>
-        </ul>
-    </div>
-    <div>
-        <h3>CSS3动效</h3>
-        <ul>
-            <li><a href="pages/表盘.html">表盘</a></li>
-            <li><a href="pages/扇形菜单.html">扇形菜单</a></li>
-        </ul>
-    </div>
-    <div>
-        <h3>小游戏</h3>
-        <ul>
-            <li><a href="pages/消除QQ表情小游戏.html">消除QQ表情小游戏</a></li>
-        </ul>
-    </div>
-    <div>
-        <h3>其他示例</h3>
-        <ul>
-            <li><a href="pages/纯CSS绘制三角形.html">纯CSS绘制三角形</a></li>
-        </ul>
-    </div>
+
 
 
     <script>
@@ -196,12 +200,9 @@
         var CARD_WIDTH = 220,   // card 宽度 220
             CARD_GAP = 20,  // card 间隔 20
             CARD_AREA = CARD_WIDTH + CARD_GAP;  // card 所占区域为二者之和 240
-
         // 预设保存每列高度的数组
         var colsHeight = [];
 
-
-        
         // 页面加载时，执行
         waterfall();
         // 窗口尺寸改变时，执行
@@ -209,19 +210,17 @@
 
 
         function waterfall() {
-            // 文档宽度
-            var docWidth = document.documentElement.clientWidth;
-            // 减去其两侧的 padding 20px，得出可用宽度
-            var _width = docWidth - CARD_GAP;
+            // body 宽度
+            var bodyWidth = document.body.clientWidth;
             // 计算列数
-            var cols = Math.floor(_width / CARD_AREA);
+            var cols = Math.floor(bodyWidth / CARD_AREA);
 
             // 如果列数前后相等，不执行函数
             if (cols == colsHeight.length) return;
 
-            // 给 body 设置 width 和 padding，使其可在页面内水平居中。
-            document.body.style.width = cols * CARD_AREA + 'px';
-            document.body.style.padding = CARD_GAP / 2 + 'px';
+            var container = document.getElementById('container');
+            // 设置 container 的 width
+            container.style.width = cols * CARD_AREA - CARD_GAP + 'px';
 
             // 更新列高数组
             colsHeight = new Array(cols);
@@ -230,8 +229,14 @@
                 colsHeight[i] = 0;
             }
 
-            // 页面中所有 card(div元素)
-            var cards = document.getElementsByTagName('div');
+            // container 中所有 card
+            var cards;
+
+            if (container.getElementsByClassName) {
+                cards = container.getElementsByClassName('card');
+            } else {
+                cards = getElementsByClassName(container, 'card');
+            }
 
             // 遍历 cards
             for (var i = 0; i < cards.length; i++) {
@@ -249,9 +254,9 @@
                         break;
                     }
                 }
-                
-                card.style.left = minIndex * CARD_AREA + CARD_GAP + 'px';
-                card.style.top = minHeight + CARD_GAP + 'px';
+
+                card.style.left = minIndex * CARD_AREA + 'px';
+                card.style.top = minHeight + 'px';
 
                 // 更新 card 位置之后，card 所处列的高度随即发生变化
                 colsHeight[minIndex] = minHeight + CARD_GAP + card.offsetHeight;
@@ -259,9 +264,9 @@
 
             // 找出最大列高
             var maxHeight = Math.max.apply(null, colsHeight);
-            // 给 body 的高度赋值，否则 body 会高度塌陷
-            // 其实不设置 body 高度，视觉上也并无不妥，只是更趋完善而已！
-            document.body.style.height = maxHeight + 'px';
+            // 给 container 的高度赋值，否则 container 会高度塌陷
+            // 其实不设置 container 高度，视觉上也并无不妥，只是更趋完善而已！
+            container.style.height = maxHeight - CARD_GAP + 'px';
         }
 
 
@@ -283,6 +288,26 @@
                 }, delay);
             }
         }
+
+        // 自定义 getElementsByClassName，兼容 IE7/8
+        function getElementsByClassName(parentElem, className) {
+            var elems = parentElem.getElementsByTagName('*');
+            var arr = [];
+
+            for (var i = 0; i < elems.length; i++) {
+                var classList = elems[i].className.split(' ');
+
+                for (var j = 0; j < classList.length; j++) {
+                    if (classList[j] == className) {
+                        arr.push(elems[i]);
+                        break;
+                    }
+                }
+            }
+
+            return arr;
+        }
+
 
     </script>
 </body>
