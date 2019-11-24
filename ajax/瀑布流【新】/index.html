@@ -7,6 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Waterfall</title>
     <style>
+        html {
+            background-color: #f5f5f5;
+        }
         body {
             margin: 0;
         }
@@ -22,17 +25,18 @@
             padding: 10px;
             border-radius: 8px;
             background-color: #fff;
-            box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0 4px rgba(0, 0, 0, .3);
             position: absolute;
             cursor: pointer;
-            transition: left .8s ease 0s, top .8s ease 0s, transform .4s ease 0s;
+            transition: left .8s ease 0s, top .8s ease 0s, box-shadow .4s ease 0s;
         }
 
         .item:hover {
-            transform: translateY(-4px);
+            box-shadow: 0 0 4px blue;
         }
 
         .item img {
+            width: 100%;
             display: block;
         }
 
@@ -71,7 +75,7 @@
             const clientHeight = document.documentElement.clientHeight;
             const offsetHeight = document.documentElement.offsetHeight;
 
-            if (scrollTop + clientHeight > offsetHeight - 1) {
+            if (scrollTop + clientHeight > offsetHeight - 10) {
                 if (r) {
                     r = false;
                     page++;
@@ -96,12 +100,12 @@
 
         // 发送网络请求，根据返回结果渲染每一项。
         function request(count = 20) {
-            fetch('https://api.apiopen.top/getImages?page=' + page + '&count=' + count)
+            fetch(`https://api.apiopen.top/getImages?page=${page}&count=${count}`)
                 .then(res => res.json())
                 .then(({ result }) => {
                     for (let { id, img } of result) {
                         const item = document.createElement('div');
-                        const image = new Image(178);
+                        const image = new Image();
                         const p = document.createElement('p');
 
                         item.classList.add('item');
@@ -125,7 +129,7 @@
         function reRender() {
             let cols = getCols();
             // 如果列数前后相等，不执行函数
-            if (cols == COLS_HEIGHT.length) return; console.log(1223)
+            if (cols == COLS_HEIGHT.length) return;
 
             set(cols);
 
