@@ -145,6 +145,7 @@
             <ul>
                 <li><a href="ajax/级联菜单">级联菜单</a></li>
                 <li><a href="ajax/瀑布流">瀑布流</a></li>
+                <li><a href="ajax/瀑布流【新】">瀑布流【新】</a></li>
             </ul>
         </div>
         <div class="card">
@@ -260,13 +261,13 @@
 
                 // 更新 card 位置之后，card 所处列的高度随即发生变化
                 colsHeight[minIndex] = minHeight + CARD_GAP + card.offsetHeight;
-            }
 
-            // 找出最大列高
-            var maxHeight = Math.max.apply(null, colsHeight);
-            // 给 container 的高度赋值，否则 container 会高度塌陷
-            // 其实不设置 container 高度，视觉上也并无不妥，只是更趋完善而已！
-            container.style.height = maxHeight - CARD_GAP + 'px';
+                // 找出最大列高
+                var maxHeight = Math.max.apply(null, colsHeight);
+                // 给 container 的高度赋值，否则 container 会高度塌陷
+                // 其实不设置 container 高度，视觉上也并无不妥，只是更趋完善而已！
+                container.style.height = maxHeight - CARD_GAP + 'px';
+            }
         }
 
 

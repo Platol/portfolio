@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Waterfall</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        #waterfall {
+            position: relative;
+            margin: 20px auto;
+        }
+
+        .item {
+            width: 200px;
+            box-sizing: border-box;
+            padding: 10px;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+            position: absolute;
+            cursor: pointer;
+            transition: left .8s ease 0s, top .8s ease 0s, transform .4s ease 0s;
+        }
+
+        .item:hover {
+            transform: translateY(-4px);
+        }
+
+        .item img {
+            display: block;
+        }
+
+        .item p {
+            margin: 0;
+            padding-top: 12px;
+            line-height: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="waterfall"></div>
+
+    <script>
+        document.ondragstart = function (e) {
+            e.preventDefault();
+        }
+
+
+        let page = 1;
+        let r = true;
+        let COLS_HEIGHT = [];
+        
+        const ITEM_WIDTH = 200, ITEM_GAP = 20;
+        const waterfall = document.getElementById('waterfall');
+
+
+        window.onload = function () {
+            let cols = getCols();
+            set(cols);
+            request();
+        }
+        window.onscroll = function () {
+            const scrollTop = document.documentElement.scrollTop;
+            const clientHeight = document.documentElement.clientHeight;
+            const offsetHeight = document.documentElement.offsetHeight;
+
+            if (scrollTop + clientHeight > offsetHeight - 1) {
+                if (r) {
+                    r = false;
+                    page++;
+                    request();
+                }
+            }
+        }
+        window.onresize = throttle(reRender, 300);
+
+
+
+        // 获取列数
+        const getCols = () => Math.floor(document.body.clientWidth / (ITEM_WIDTH + ITEM_GAP));
+        // 实在没法命名，干脆就 set 吧！！
+        const set = (cols) => {
+            // 设置 waterfall 的 width
+            waterfall.style.width = cols * (ITEM_WIDTH + ITEM_GAP) - ITEM_GAP + 'px';
+            // 更新列高数组
+            COLS_HEIGHT = new Array(cols).fill(0);
+        }
+
+
+        // 发送网络请求，根据返回结果渲染每一项。
+        function request() {
+            fetch('https://api.apiopen.top/getImages?page=' + page)
+                .then(res => res.json())
+                .then(({ result }) => {
+                    for (let { id, img } of result) {
+                        const item = document.createElement('div');
+                        const image = new Image(178);
+                        const p = document.createElement('p');
+
+                        item.classList.add('item');
+                        image.src = img;
+                        p.innerHTML = id;
+
+                        image.onload = function () {
+                            item.appendChild(image);
+                            item.appendChild(p);
+                            waterfall.appendChild(item);
+                            // 众神归位
+                            renderItem(item);
+                        }
+                    }
+
+                    r = true;
+                });
+        }
+
+        // 重新渲染整个页面，一般窗口尺寸变化时触发。
+        function reRender() {
+            let cols = getCols();
+            // 如果列数前后相等，不执行函数
+            if (cols == COLS_HEIGHT.length) return; console.log(1223)
+
+            set(cols);
+
+            const items = waterfall.getElementsByClassName('item');
+
+            // 遍历 items
+            for (let item of items) {
+                // 众神归位
+                renderItem(item);
+            }
+        }
+
+        // 针对每一项的渲染
+        function renderItem(item) {
+            // 找出最小列高
+            let minHeight = Math.min(...COLS_HEIGHT);
+            // 最小列高在列高数组中的索引
+            let minIndex = COLS_HEIGHT.indexOf(minHeight);
+
+            item.style.left = minIndex * (ITEM_WIDTH + ITEM_GAP) + 'px';
+            item.style.top = minHeight + 'px';
+
+            // 更新 item 位置之后，item 所处列的高度随即发生变化
+            COLS_HEIGHT[minIndex] = minHeight + ITEM_GAP + item.offsetHeight;
+
+            // 最大列高在列高数组中的索引
+            let maxHeight = Math.max(...COLS_HEIGHT);
+            // 设置 waterfall 的 height
+            waterfall.style.height = maxHeight - ITEM_GAP + 'px';
+        }
+
+
+        // 事件节流，防止事件高频触发！！
+        function throttle(fn, delay) {
+            let lock = false;
+
+            return function () {
+                if (lock) return;
+
+                lock = true;
+
+                setTimeout(() => {
+                    fn.apply(this, arguments);
+                    lock = false;
+                }, delay);
+            }
+        }
+
+    </script>
+</body>
+
+</html>
