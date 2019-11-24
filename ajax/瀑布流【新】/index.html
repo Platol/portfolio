@@ -56,7 +56,7 @@
         let page = 1;
         let r = true;
         let COLS_HEIGHT = [];
-        
+
         const ITEM_WIDTH = 200, ITEM_GAP = 20;
         const waterfall = document.getElementById('waterfall');
 
@@ -64,7 +64,7 @@
         window.onload = function () {
             let cols = getCols();
             set(cols);
-            request();
+            request(50);
         }
         window.onscroll = function () {
             const scrollTop = document.documentElement.scrollTop;
@@ -95,8 +95,8 @@
 
 
         // 发送网络请求，根据返回结果渲染每一项。
-        function request() {
-            fetch('https://api.apiopen.top/getImages?page=' + page)
+        function request(count = 20) {
+            fetch('https://api.apiopen.top/getImages?page=' + page + '&count=' + count)
                 .then(res => res.json())
                 .then(({ result }) => {
                     for (let { id, img } of result) {
