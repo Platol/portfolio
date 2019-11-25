@@ -21,7 +21,7 @@
         }
 
         .item {
-            width: 200px;
+            /* width: 200px; */
             box-sizing: border-box;
             padding: 10px;
             border-radius: 8px;
@@ -78,7 +78,7 @@
             const clientHeight = document.documentElement.clientHeight;
             const offsetHeight = document.documentElement.offsetHeight;
 
-            if (scrollTop + clientHeight > offsetHeight - 10) {
+            if (scrollTop + clientHeight + 50 > offsetHeight) {
                 if (r) {
                     r = false;
                     page++;
@@ -103,7 +103,7 @@
             }
         }
         // 实在没法命名，干脆就 set 吧！！
-        const set = (cols) => {
+        const set = cols => {
             // 设置 waterfall 的 width
             waterfall.style.width = cols * (ITEM_WIDTH + ITEM_GAP) - ITEM_GAP + 'px';
             // 更新列高数组
@@ -169,7 +169,7 @@
             if (document.body.clientWidth <= 414) {
                 item.style.width = (document.body.clientWidth - 60) / 2 + 'px';
             } else {
-                item.style.width = '200px';
+                item.style.width = ITEM_WIDTH + 'px';
             }
 
             // 更新 item 位置之后，item 所处列的高度随即发生变化
